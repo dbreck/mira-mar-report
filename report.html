@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mira Mar — Marketing Performance Report</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #1a1f2e;
+    --card-bg:   #232838;
+    --card-border: #2e3548;
+    --gold:      #c9a96e;
+    --gold-dim:  #a08450;
+    --white:     #f0f0f0;
+    --muted:     #9ca3af;
+    --green:     #4ade80;
+    --green-bg:  rgba(74,222,128,0.08);
+    --yellow:    #facc15;
+    --yellow-bg: rgba(250,204,21,0.08);
+    --red:       #f87171;
+    --red-bg:    rgba(248,113,113,0.08);
+    --radius:    12px;
+    --max-w:     820px;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 2rem 1.25rem 3rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 2.5rem 1rem 2rem;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 2rem;
+  }
+  .header__brand {
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+  .header__title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.25rem;
+  }
+  .header__period {
+    font-size: 1rem;
+    color: var(--muted);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .card--green  { border-left: 4px solid var(--green);  }
+  .card--yellow { border-left: 4px solid var(--yellow); }
+  .card--red    { border-left: 4px solid var(--red);    }
+  .card--gold   { border-left: 4px solid var(--gold);   }
+
+  .card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+  .status--green  { background: var(--green-bg);  color: var(--green);  }
+  .status--yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .status--red    { background: var(--red-bg);    color: var(--red);    }
+  .status--gold   { background: rgba(201,169,110,0.12); color: var(--gold); }
+
+  .card__title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+  .card__narrative {
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  /* ── Metric pills ── */
+  .metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .metric {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    min-width: 120px;
+    flex: 1 1 auto;
+  }
+  .metric__value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .metric__label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Action callout ── */
+  .action {
+    font-size: 0.9rem;
+    color: var(--gold-dim);
+    padding-left: 1rem;
+    border-left: 2px solid var(--gold-dim);
+    margin-top: 0.5rem;
+  }
+  .action strong { color: var(--gold); }
+
+  /* ── Executive Summary ── */
+  .summary-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+  }
+  .summary-stat {
+    background: rgba(201,169,110,0.06);
+    border: 1px solid rgba(201,169,110,0.15);
+    border-radius: 8px;
+    padding: 0.75rem 1.1rem;
+    text-align: center;
+    flex: 1 1 140px;
+  }
+  .summary-stat__value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .summary-stat__label {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  .summary-list li {
+    padding: 0.35rem 0;
+    padding-left: 1.25rem;
+    position: relative;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .summary-list li::before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  /* ── Bar Charts ── */
+  .chart { margin: 1.25rem 0 0.75rem; }
+  .chart__title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .chart-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .chart-row__label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    width: 130px;
+    flex-shrink: 0;
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .chart-row__bar-wrap {
+    flex: 1;
+    height: 22px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .chart-row__bar {
+    height: 100%;
+    border-radius: 4px;
+    min-width: 2px;
+    transition: width 0.3s ease;
+  }
+  .chart-row__value {
+    font-size: 0.8rem;
+    color: var(--white);
+    width: 70px;
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+  .bar--gold   { background: var(--gold); }
+  .bar--green  { background: var(--green); }
+  .bar--blue   { background: #60a5fa; }
+  .bar--purple { background: #a78bfa; }
+  .bar--orange { background: #fb923c; }
+  .bar--red    { background: var(--red); }
+  .bar--teal   { background: #2dd4bf; }
+  .bar--muted  { background: rgba(255,255,255,0.15); }
+
+  /* ── Donut chart ── */
+  .donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1.25rem 0 0.75rem;
+  }
+  .donut-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .donut-legend__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .donut-legend__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .donut-legend__val {
+    color: var(--white);
+    font-weight: 600;
+    margin-left: auto;
+    padding-left: 0.75rem;
+  }
+
+  /* ── Recommendations ── */
+  .rec-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: rec;
+  }
+  .rec-list li {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 0.95rem;
+    color: var(--muted);
+  }
+  .rec-list li:last-child { border-bottom: none; }
+  .rec-num {
+    counter-increment: rec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: rgba(201,169,110,0.12);
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .rec-text strong { color: var(--white); }
+  .rec-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    margin-right: 0.4rem;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .rec-tag--high { background: rgba(248,113,113,0.15); color: var(--red); }
+  .rec-tag--med  { background: rgba(250,204,21,0.15); color: var(--yellow); }
+  .rec-tag--low  { background: rgba(74,222,128,0.1); color: var(--green); }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    border-top: 1px solid var(--card-border);
+    margin-top: 2rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .report { padding: 1rem 0.75rem 2rem; }
+    .header__title { font-size: 1.35rem; }
+    .card { padding: 1.25rem; }
+    .metric { min-width: 100px; }
+    .summary-stat { flex: 1 1 100px; }
+    .summary-stat__value { font-size: 1.25rem; }
+    .chart-row__label { width: 90px; font-size: 0.7rem; }
+    .donut-wrap { flex-direction: column; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; color: #1a1a1a; }
+    .report { max-width: 100%; padding: 0; }
+    .card { border: 1px solid #ddd; background: #fff; break-inside: avoid; }
+    .card--green  { border-left-color: #22c55e; }
+    .card--yellow { border-left-color: #eab308; }
+    .card--red    { border-left-color: #ef4444; }
+    .card--gold   { border-left-color: #b8963e; }
+    .card__narrative { color: #555; }
+    .metric { background: #f9f9f9; border-color: #ddd; }
+    .metric__value { color: #8b6914; }
+    .metric__label { color: #666; }
+    .summary-stat { background: #faf6ee; border-color: #e8dcc6; }
+    .summary-stat__value { color: #8b6914; }
+    .header { border-bottom-color: #ddd; }
+    .footer { border-top-color: #ddd; color: #999; }
+    .action { color: #8b6914; border-left-color: #8b6914; }
+    .chart-row__bar-wrap { background: #eee; }
+    .chart-row__label { color: #666; }
+    .chart-row__value { color: #333; }
+    .donut-legend__item { color: #666; }
+    .donut-legend__val { color: #333; }
+    .rec-list li { color: #555; border-bottom-color: #ddd; }
+    .rec-text strong { color: #1a1a1a; }
+  }
+</style>
+</head>
+<body>
+<div class="report">
+
+  <header class="header">
+    <div class="header__brand">Mira Mar Sarasota</div>
+    <h1 class="header__title">Marketing Performance Report</h1>
+    <div class="header__period">February 10 &ndash; March 11, 2026</div>
+  </header>
+
+  <!-- ═══ EXECUTIVE SUMMARY ═══ -->
+  <section class="card card--green" id="executive-summary">
+    <div class="card__header">
+      <span class="status status--green">&#x25CF;</span>
+      <h2 class="card__title">Executive Summary</h2>
+    </div>
+    <p class="card__narrative">
+      Marketing is performing well across all channels. The combined spend of $51K has generated 268 leads at $190 each &mdash; a strong cost per lead for luxury real estate. Website traffic is surging (up 43%), phone calls are up 80%, and the sales team is actively working a pipeline of 25 warm leads and 2 reservation holders. The one area to watch: 8 missed calls this period and declining pages-per-visit suggest some leads may be slipping through or not fully engaging with the site.
+    </p>
+    <div class="summary-stats">
+      <div class="summary-stat">
+        <div class="summary-stat__value">$51,026</div>
+        <div class="summary-stat__label">Total Spend</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat__value">268</div>
+        <div class="summary-stat__label">Total Leads</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat__value">$190</div>
+        <div class="summary-stat__label">Cost Per Lead</div>
+      </div>
+      <div class="summary-stat">
+        <div class="summary-stat__value">10.1%</div>
+        <div class="summary-stat__label">Google CTR</div>
+      </div>
+    </div>
+
+    <!-- Channel spend allocation chart -->
+    <div class="chart">
+      <div class="chart__title">Spend by Channel</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google Search</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:80%"></div></div>
+        <span class="chart-row__value">$24,509</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Meta / Instagram</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--purple" style="width:17%"></div></div>
+        <span class="chart-row__value">$5,336</span>
+      </div>
+    </div>
+
+    <ul class="summary-list">
+      <li>Google Ads driving the most volume with 87 conversions and a 10.1% click-through rate</li>
+      <li>Meta/Facebook ads delivering leads at $172 each &mdash; the most cost-efficient channel</li>
+      <li>Phone calls surged 80% with 17 first-time callers, though 30% went unanswered</li>
+      <li>Organic search visibility improving: average position moved to 11.4 with 92 unique queries</li>
+    </ul>
+  </section>
+
+  <!-- ═══ BUDGET & ROI ═══ -->
+  <section class="card card--green" id="budget-roi">
+    <div class="card__header">
+      <span class="status status--green">&#x25CF;</span>
+      <h2 class="card__title">Budget &amp; ROI</h2>
+    </div>
+    <p class="card__narrative">
+      The budget is working efficiently. At $190 per lead, Mira Mar is well within the target range for luxury condo marketing. Google Search gets the lion's share of spend ($24.5K) and drives the most raw leads, while Meta ($5.3K) punches above its weight with a lower cost per lead. The branded search campaign is a standout at just $17 per lead, confirming that name recognition is building. Two campaigns need scrutiny: the Competitor targeting spent $1,888 for a single lead, and the Feeder Market campaign runs at $777 per lead.
+    </p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric__value">$51,026</div>
+        <div class="metric__label">Total Spend</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">268</div>
+        <div class="metric__label">Total Leads</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">$190</div>
+        <div class="metric__label">Cost Per Lead</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">436K</div>
+        <div class="metric__label">Impressions</div>
+      </div>
+    </div>
+
+    <!-- Cost per lead by campaign -->
+    <div class="chart">
+      <div class="chart__title">Cost Per Lead by Campaign</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Branded Search</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--green" style="width:1%"></div></div>
+        <span class="chart-row__value">$17</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Meta Feeder Mkt</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--green" style="width:3%"></div></div>
+        <span class="chart-row__value">$58</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Meta Sarasota</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--gold" style="width:9%"></div></div>
+        <span class="chart-row__value">$169</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google Non-Brand</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--gold" style="width:12%"></div></div>
+        <span class="chart-row__value">$228</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google Feeder Mkt</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--red" style="width:41%"></div></div>
+        <span class="chart-row__value">$777</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google Competitors</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--red" style="width:100%"></div></div>
+        <span class="chart-row__value">$1,888</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GOOGLE ADS ═══ -->
+  <section class="card card--yellow" id="google-ads">
+    <div class="card__header">
+      <span class="status status--yellow">&#x25CF;</span>
+      <h2 class="card__title">Google Ads Performance</h2>
+    </div>
+    <p class="card__narrative">
+      Google Ads is the workhorse with strong click-through rates, but conversion efficiency has room to improve. The 10.1% CTR is excellent &mdash; people are clicking &mdash; but only 1.14% convert to leads. The Non-Branded Sarasota campaign drives the most volume (56 conversions) and the Branded campaign is extremely efficient (23 conversions at just $477). Top keywords center on "florida condos for sale" and "sarasota condos," with branded terms showing strong intent. Most conversions come from Sarasota, North Sarasota, and New York.
+    </p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric__value">10.1%</div>
+        <div class="metric__label">CTR</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">1.14%</div>
+        <div class="metric__label">Conv Rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">$4.02</div>
+        <div class="metric__label">CPC</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">87</div>
+        <div class="metric__label">Conversions</div>
+      </div>
+    </div>
+
+    <!-- Conversions by campaign -->
+    <div class="chart">
+      <div class="chart__title">Conversions by Campaign</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Non-Brand Sarasota</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:100%"></div></div>
+        <span class="chart-row__value">56</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Branded Search</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--teal" style="width:41%"></div></div>
+        <span class="chart-row__value">23</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Feeder Markets</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--orange" style="width:12.5%"></div></div>
+        <span class="chart-row__value">7</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Competitors</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--red" style="width:1.8%"></div></div>
+        <span class="chart-row__value">1</span>
+      </div>
+    </div>
+
+    <!-- Top keywords -->
+    <div class="chart">
+      <div class="chart__title">Top Search Keywords (by clicks)</div>
+      <div class="chart-row">
+        <span class="chart-row__label">florida condos for sale</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:100%"></div></div>
+        <span class="chart-row__value"></span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">sarasota condos</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:75%"></div></div>
+        <span class="chart-row__value"></span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">mira mar sarasota</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--teal" style="width:55%"></div></div>
+        <span class="chart-row__value"></span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">sarasota real estate</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:40%"></div></div>
+        <span class="chart-row__value"></span>
+      </div>
+    </div>
+
+    <div class="action">
+      <strong>Recommendation:</strong> Test landing page improvements to boost the 1.14% conversion rate &mdash; even a small lift to 2% would nearly double leads without increasing spend.
+    </div>
+  </section>
+
+  <!-- ═══ META ADS ═══ -->
+  <section class="card card--green" id="meta-ads">
+    <div class="card__header">
+      <span class="status status--green">&#x25CF;</span>
+      <h2 class="card__title">Meta Ads Performance</h2>
+    </div>
+    <p class="card__narrative">
+      Meta (Facebook &amp; Instagram) continues to be the most cost-efficient lead source and is particularly effective at reaching real estate agents and brokers. The platform generated 42 leads in the last 30 days at $172 per lead &mdash; lower than Google's $282. The Feeder Market campaign is attracting agents from Miami, Fort Lauderdale, and other Florida markets who want to represent Mira Mar to their clients. Top locations: Sarasota, Tampa, Orlando, and Lakewood Ranch.
+    </p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric__value">1.21%</div>
+        <div class="metric__label">Conv Rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">$172</div>
+        <div class="metric__label">Cost Per Lead</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">$5,336</div>
+        <div class="metric__label">Total Spend</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">42</div>
+        <div class="metric__label">Leads (30 days)</div>
+      </div>
+    </div>
+
+    <!-- Meta leads by campaign -->
+    <div class="chart">
+      <div class="chart__title">Leads by Campaign</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Prospecting &mdash; Mira Mar</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--purple" style="width:100%"></div></div>
+        <span class="chart-row__value">19 leads</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Prospecting &mdash; Sarasota</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--purple" style="width:58%"></div></div>
+        <span class="chart-row__value">11 leads</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Remarketing</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--purple" style="width:5%"></div></div>
+        <span class="chart-row__value">1 lead</span>
+      </div>
+    </div>
+
+    <!-- Lead source mix -->
+    <div class="chart">
+      <div class="chart__title">Lead Source (Last 30 Days)</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Facebook Ads</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:100%"></div></div>
+        <span class="chart-row__value">28</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Instagram Ads</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--orange" style="width:50%"></div></div>
+        <span class="chart-row__value">14</span>
+      </div>
+    </div>
+
+    <div class="action">
+      <strong>Recommendation:</strong> Consider increasing Meta spend to capture more agent and broker leads, particularly through the Feeder Market campaign.
+    </div>
+  </section>
+
+  <!-- ═══ WEBSITE & ORGANIC ═══ -->
+  <section class="card card--yellow" id="website-organic">
+    <div class="card__header">
+      <span class="status status--yellow">&#x25CF;</span>
+      <h2 class="card__title">Website &amp; Organic Search</h2>
+    </div>
+    <p class="card__narrative">
+      Website traffic is growing fast &mdash; active users are up 43% to 6,000 and new users up 42% &mdash; but engagement depth is declining. Visitors are viewing only 1.8 pages on average (down 14%), and the homepage has a 65% bounce rate. The good news: deeper pages like Residences (9% bounce), Amenities (11% bounce), and Our History (8% bounce) hold attention well, with visitors spending 2+ minutes on those pages. Search visibility is improving with average position at 11.4 (up 20%), 92 unique queries, and 4,400 impressions.
+    </p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric__value">6,000</div>
+        <div class="metric__label">Active Users</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">1.8</div>
+        <div class="metric__label">Pages / User</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">11.4</div>
+        <div class="metric__label">Avg Search Position</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">4,400</div>
+        <div class="metric__label">Search Impressions</div>
+      </div>
+    </div>
+
+    <!-- Traffic sources -->
+    <div class="chart">
+      <div class="chart__title">Sessions by Source</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google (all)</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:100%"></div></div>
+        <span class="chart-row__value">2,582</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Direct</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--gold" style="width:64%"></div></div>
+        <span class="chart-row__value">1,658</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Meta</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--purple" style="width:64%"></div></div>
+        <span class="chart-row__value">1,653</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Business Observer</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--teal" style="width:9%"></div></div>
+        <span class="chart-row__value">236</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Your Observer</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--teal" style="width:7%"></div></div>
+        <span class="chart-row__value">178</span>
+      </div>
+    </div>
+
+    <!-- Page engagement -->
+    <div class="chart">
+      <div class="chart__title">Bounce Rate by Page (lower is better)</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Our History</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--green" style="width:12%"></div></div>
+        <span class="chart-row__value">8%</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Residences</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--green" style="width:14%"></div></div>
+        <span class="chart-row__value">9%</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Amenities</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--green" style="width:17%"></div></div>
+        <span class="chart-row__value">11%</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Contact</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--orange" style="width:74%"></div></div>
+        <span class="chart-row__value">48%</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Homepage</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--red" style="width:100%"></div></div>
+        <span class="chart-row__value">65%</span>
+      </div>
+    </div>
+
+    <div class="action">
+      <strong>Recommendation:</strong> Investigate the homepage bounce rate (65%) &mdash; visitors arriving from ads may not be finding a clear next step. Add stronger calls-to-action guiding visitors toward Residences or Contact.
+    </div>
+  </section>
+
+  <!-- ═══ LEAD PIPELINE ═══ -->
+  <section class="card card--yellow" id="lead-pipeline">
+    <div class="card__header">
+      <span class="status status--yellow">&#x25CF;</span>
+      <h2 class="card__title">Lead Pipeline &amp; Phone Engagement</h2>
+    </div>
+    <p class="card__narrative">
+      The lead pipeline is active and the sales team is doing strong follow-up work. There are currently 25 warm leads, 1 hot lead (appointment scheduled March 17), and 2 reservation holders. Phone calls surged 80% to 27 total, with 17 first-time callers. However, 8 calls (30%) went unanswered &mdash; a missed opportunity when every lead at this price point matters. Many Meta leads are real estate agents from Miami and South Florida looking to represent Mira Mar &mdash; a valuable channel for expanding reach.
+    </p>
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric__value">44</div>
+        <div class="metric__label">Tracked Leads</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">27</div>
+        <div class="metric__label">Total Calls</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">74%</div>
+        <div class="metric__label">Answer Rate</div>
+      </div>
+      <div class="metric">
+        <div class="metric__value">17</div>
+        <div class="metric__label">First-Time Callers</div>
+      </div>
+    </div>
+
+    <!-- Calls by source -->
+    <div class="chart">
+      <div class="chart__title">Calls by Source</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Print Ad</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--gold" style="width:100%"></div></div>
+        <span class="chart-row__value">12</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google Ads</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--blue" style="width:50%"></div></div>
+        <span class="chart-row__value">6</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Facebook Ads</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--purple" style="width:25%"></div></div>
+        <span class="chart-row__value">3</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Google Organic</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--teal" style="width:25%"></div></div>
+        <span class="chart-row__value">3</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Direct</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--muted" style="width:25%"></div></div>
+        <span class="chart-row__value">3</span>
+      </div>
+    </div>
+
+    <!-- Answered vs missed -->
+    <div class="chart">
+      <div class="chart__title">Call Outcomes</div>
+      <div class="chart-row">
+        <span class="chart-row__label">Answered</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--green" style="width:74%"></div></div>
+        <span class="chart-row__value">20 (74%)</span>
+      </div>
+      <div class="chart-row">
+        <span class="chart-row__label">Missed</span>
+        <div class="chart-row__bar-wrap"><div class="chart-row__bar bar--red" style="width:30%"></div></div>
+        <span class="chart-row__value">8 (30%)</span>
+      </div>
+    </div>
+
+    <div class="action">
+      <strong>Recommendation:</strong> Address the 30% missed call rate. Consider a call routing backup or after-hours voicemail-to-text system &mdash; every missed call is ~$190 in wasted ad spend.
+    </div>
+  </section>
+
+  <!-- ═══ KEY RECOMMENDATIONS ═══ -->
+  <section class="card card--gold" id="recommendations">
+    <div class="card__header">
+      <span class="status status--gold">&#x2605;</span>
+      <h2 class="card__title">Key Recommendations</h2>
+    </div>
+    <ol class="rec-list">
+      <li>
+        <span class="rec-num">1</span>
+        <span class="rec-text"><span class="rec-tag rec-tag--high">High</span> <strong>Fix the missed call rate.</strong> 8 of 27 calls (30%) went unanswered. At $190 per lead, that's roughly $1,520 in ad spend that didn't get a human response. Add a call routing backup or after-hours voicemail-to-text system.</span>
+      </li>
+      <li>
+        <span class="rec-num">2</span>
+        <span class="rec-text"><span class="rec-tag rec-tag--high">High</span> <strong>Cut wasteful campaigns.</strong> The Google Competitor campaign spent $1,888 for one lead, and the Feeder Market campaign runs at $777/lead. Pause or significantly reduce these and reallocate to Branded Search and Meta Prospecting.</span>
+      </li>
+      <li>
+        <span class="rec-num">3</span>
+        <span class="rec-text"><span class="rec-tag rec-tag--med">Medium</span> <strong>Improve landing page conversion.</strong> Google Ads has a strong 10.1% CTR but only 1.14% of clicks convert. Even a modest lift to 2% would nearly double leads without increasing spend. Test clearer CTAs, shorter forms, or dedicated landing pages for top campaigns.</span>
+      </li>
+      <li>
+        <span class="rec-num">4</span>
+        <span class="rec-text"><span class="rec-tag rec-tag--med">Medium</span> <strong>Fix the homepage bounce rate.</strong> At 65%, the homepage is losing two-thirds of visitors immediately. Interior pages (Residences 9%, Amenities 11%) perform well &mdash; consider sending ad traffic directly to these pages, or redesign the homepage with stronger above-the-fold content and clear next steps.</span>
+      </li>
+      <li>
+        <span class="rec-num">5</span>
+        <span class="rec-text"><span class="rec-tag rec-tag--low">Opportunity</span> <strong>Increase Meta budget.</strong> Meta delivers leads at $172 vs Google's $282 and is uniquely effective at reaching real estate agents/brokers from Miami and South Florida. Shifting even $2K from underperforming Google campaigns to Meta could yield 10+ additional leads.</span>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="footer">
+    <p>Report generated March 12, 2026 by Clear pH &middot; Data sourced from Looker Studio dashboard</p>
+  </footer>
+
+</div>
+</body>
+</html>
