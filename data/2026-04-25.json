@@ -1,0 +1,171 @@
+{
+  "id": "2026-04-25",
+  "label": "Mar 27 – Apr 25, 2026",
+  "period_start": "2026-03-27",
+  "period_end": "2026-04-25",
+  "compare_to": "2026-03-11",
+  "generated_at": "2026-04-25",
+  "status": {
+    "executive_summary": "green",
+    "budget_roi": "green",
+    "google_ads": "green",
+    "meta_ads": "yellow",
+    "website_organic": "green",
+    "lead_pipeline": "yellow"
+  },
+  "summary": {
+    "total_spend": 16164,
+    "total_leads": 70,
+    "cost_per_lead": 231,
+    "google_ctr_pct": 8.3,
+    "narrative": "Strong period overall, with notable wins on Google Ads efficiency and organic search. A combined spend of $16.2K generated 70 leads at $231 each — better than the prior month. Google Ads conversion rate more than doubled, and search visibility is surging (impressions +76%, queries +52%). Spark pipeline is healthy with 31 warm and 2 hot leads. The main concerns: Meta CPL crept up 45%, total website traffic dipped 10%, and total inbound calls are down 44%."
+  },
+  "spend_by_channel": {
+    "google_search": 9261.04,
+    "meta_instagram": 6902.49
+  },
+  "budget_roi": {
+    "total_spend": 16163.53,
+    "total_leads": 70,
+    "cost_per_lead": 231,
+    "impressions": 157150,
+    "cpl_by_campaign": [
+      { "campaign": "Search_Branded", "cpl": 54, "channel": "google" },
+      { "campaign": "Meta Remarketing", "cpl": 60, "channel": "meta" },
+      { "campaign": "Meta Sarasota", "cpl": 171, "channel": "meta" },
+      { "campaign": "Meta Feeder Mkt", "cpl": 207, "channel": "meta" },
+      { "campaign": "Google Non-Brand Sarasota", "cpl": 258, "channel": "google" },
+      { "campaign": "Google Competitors", "cpl": 593, "channel": "google" },
+      { "campaign": "Google Feeder Mkt", "cpl": 9999, "channel": "google", "note": "0 conversions" }
+    ]
+  },
+  "google_ads": {
+    "ctr_pct": 8.3,
+    "conv_rate_pct": 1.66,
+    "cpc": 5.13,
+    "conversions": 30,
+    "form_submissions": 24,
+    "phone_call_leads": 6,
+    "device_split": { "mobile_pct": 65.7, "desktop_pct": 30.8, "tablet_pct": 3.5 },
+    "agents_pct": 20,
+    "non_agents_pct": 80,
+    "demographics_skew": "55-65+, gender roughly even (34/34/31)",
+    "conversions_by_campaign": [
+      { "campaign": "Non-Brand Sarasota", "conversions": 17 },
+      { "campaign": "Branded Search", "conversions": 8 },
+      { "campaign": "Competitors", "conversions": 5 },
+      { "campaign": "Feeder Markets", "conversions": 0 }
+    ],
+    "top_keywords": [
+      "sarasota condos for sale",
+      "mira mar sarasota residences",
+      "mira mar sarasota",
+      "luxury condos sarasota",
+      "new construction sarasota",
+      "ritz carlton sarasota",
+      "sarasota waterfront condos for sale",
+      "downtown sarasota condos for sale",
+      "waldorf astoria sarasota",
+      "the ritz sarasota"
+    ],
+    "top_ad": "Mira Mar Residences | Sarasota Luxury Condos | Historic Sarasota Icon Reborn"
+  },
+  "meta_ads": {
+    "conv_rate_pct": 1.21,
+    "cost_per_lead": 172.56,
+    "total_spend": 6902.49,
+    "leads_30d": 40,
+    "ctr_pct": 1.46,
+    "impressions": 135449,
+    "leads_by_campaign": [
+      { "campaign": "Prospecting — Sarasota", "leads": 22, "cpl": 170.94 },
+      { "campaign": "Prospecting — Feeder Mkt", "leads": 14, "cpl": 207.33 },
+      { "campaign": "Remarketing", "leads": 4, "cpl": 59.80 }
+    ],
+    "top_creative": "Video_Amenity (Sarasota campaign) — 13 leads at $132 CPL"
+  },
+  "website_organic": {
+    "active_users": 5200,
+    "active_users_growth_pct": -21.4,
+    "pages_per_user": 2.0,
+    "pages_per_user_growth_pct": 11.6,
+    "avg_search_position": 7.7,
+    "avg_position_growth_pct": -20.7,
+    "search_impressions": 8000,
+    "impressions_growth_pct": 76.1,
+    "queries": 147,
+    "queries_growth_pct": 51.5,
+    "branded_organic_ctr_pct": 4.5,
+    "sessions_by_source": [
+      { "source": "google", "sessions": 2185 },
+      { "source": "meta", "sessions": 2027 },
+      { "source": "direct", "sessions": 1062 },
+      { "source": "yourobserver", "sessions": 177 }
+    ],
+    "bounce_by_page": [
+      { "page": "Residences", "bounce_pct": 13.7 },
+      { "page": "Amenities-Services", "bounce_pct": 13.1 },
+      { "page": "Walkable-Location", "bounce_pct": 15.2 },
+      { "page": "Our History", "bounce_pct": 15.6 },
+      { "page": "Gallery", "bounce_pct": 15.9 },
+      { "page": "Team", "bounce_pct": 18.8 },
+      { "page": "Homepage", "bounce_pct": 46.1 },
+      { "page": "Contact", "bounce_pct": 50.9 },
+      { "page": "Welcome", "bounce_pct": 56.5 }
+    ],
+    "top_search_terms": [
+      { "query": "mira mar sarasota", "impressions": 1274, "clicks": 50, "ctr_pct": 3.92 },
+      { "query": "miramar sarasota", "impressions": 698, "clicks": 24, "ctr_pct": 3.44 },
+      { "query": "mira mar", "impressions": 540, "clicks": 14, "ctr_pct": 2.59 },
+      { "query": "mira mar residences", "impressions": 243, "clicks": 11, "ctr_pct": 4.53 },
+      { "query": "mira mar residences sarasota", "impressions": 240, "clicks": 9, "ctr_pct": 3.75 }
+    ]
+  },
+  "lead_pipeline": {
+    "tracked_leads": 49,
+    "ratings": { "hot": 2, "warm": 31, "reservation_holders": 1, "sales_visit_meeting": 15 },
+    "total_calls": 15,
+    "answer_rate_pct": 87,
+    "first_time_callers": 12,
+    "avg_call_duration_min": 2.25,
+    "missed_calls": 2,
+    "missed_pct": 13,
+    "calls_by_source": [
+      { "source": "Google Ads", "calls": 6 },
+      { "source": "Print Ad", "calls": 5 },
+      { "source": "Google Organic", "calls": 2 },
+      { "source": "Facebook Ads", "calls": 1 },
+      { "source": "Direct", "calls": 1 }
+    ]
+  },
+  "comparisons": {
+    "vs_2026-03-11": {
+      "total_spend": { "prev": 16681, "now": 16164, "delta_pct": -3.1 },
+      "total_leads": { "prev": 67, "now": 70, "delta_pct": 4.5 },
+      "cpl": { "prev": 249, "now": 231, "delta_pct": -7.2 },
+      "google_ctr": { "prev": 10.0, "now": 8.3, "delta_pct": -17.0 },
+      "google_conv_rate": { "prev": 0.76, "now": 1.66, "delta_pct": 118.4 },
+      "google_conversions": { "prev": 21, "now": 30, "delta_pct": 42.9 },
+      "meta_leads": { "prev": 41, "now": 40, "delta_pct": -2.4 },
+      "meta_cpl": { "prev": 119, "now": 172, "delta_pct": 44.5 },
+      "active_users": { "prev": 5800, "now": 5200, "delta_pct": -10.3 },
+      "pages_per_user": { "prev": 1.8, "now": 2.0, "delta_pct": 11.1 },
+      "search_position": { "prev": 11.3, "now": 7.7, "delta_pct": -31.9, "interpretation": "lower is better" },
+      "search_impressions": { "prev": 4200, "now": 8000, "delta_pct": 90.5 },
+      "queries": { "prev": 91, "now": 147, "delta_pct": 61.5 },
+      "total_calls": { "prev": 27, "now": 15, "delta_pct": -44.4 },
+      "answer_rate": { "prev": 70, "now": 87, "delta_pct": 24.3 },
+      "missed_calls": { "prev": 8, "now": 2, "delta_pct": -75.0 },
+      "spark_hot": { "prev": 1, "now": 2, "delta_pct": 100 },
+      "spark_warm": { "prev": 23, "now": 31, "delta_pct": 34.8 },
+      "spark_reservations": { "prev": 2, "now": 1, "delta_pct": -50.0 }
+    }
+  },
+  "recommendations": [
+    { "priority": "high", "headline": "Pause Google Feeder Markets", "detail": "$1,468 spent, 0 conversions this period. Same pattern as last period — kill or significantly reduce this campaign." },
+    { "priority": "high", "headline": "Investigate Meta CPL increase", "detail": "Meta CPL jumped 45% from $119 to $172. Sarasota campaign held volume but Feeder Market CPL rose to $207. Refresh creative or audience." },
+    { "priority": "medium", "headline": "Capitalize on organic momentum", "detail": "Search impressions +76%, queries +52%, position improved to 7.7. Branded terms converting well at ~4% CTR. Push more lifestyle/neighborhood content while ranking." },
+    { "priority": "medium", "headline": "Re-engage Remarketing", "detail": "Meta Remarketing produced 4 leads at $60 CPL — best efficiency on the platform after 0 leads last period. Consider expanding budget to remarketing." },
+    { "priority": "opportunity", "headline": "Lock in Google improvements", "detail": "Google conv rate doubled (0.76% → 1.66%) and conversions up 43%. Whatever changed on landing pages or targeting is working — document and amplify." }
+  ]
+}

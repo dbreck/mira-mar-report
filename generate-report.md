@@ -1,177 +1,225 @@
-# Mira Mar Monthly Marketing Report — Generation Runbook
+# Mira Mar Marketing Report — Generation Runbook
 
 > **Usage:** Open this file's parent directory in Claude Code, then say:
-> "Generate this month's Mira Mar report" (or run the prompt below).
+> "Generate this period's Mira Mar report" (or run the prompt below).
+
+This is a multi-report archive site:
+- **Latest report** is mirrored at the root (`/index.html`).
+- **All reports** are archived under `/reports/YYYY-MM-DD/index.html`.
+- Each period's metrics are also stored as JSON at `/data/YYYY-MM-DD.json` so future reports can compute deltas.
+- An archive nav (top-right pill) appears on every report and links between them.
+- The intended cadence is **biweekly** (every 2 weeks).
 
 ---
 
 ## Quick-Start Prompt
 
 ```
-Read generate-report.md and follow the instructions to produce this month's Mira Mar marketing report. Navigate the Looker Studio dashboard, extract data from each page, generate insights, and write the final report.html.
+Read generate-report.md and follow it to produce this period's Mira Mar marketing report. Navigate the Looker Studio dashboard, set every page's date filter to "Last 30 days" with Include today checked, extract data from each page, write a /data/YYYY-MM-DD.json snapshot, then build /reports/YYYY-MM-DD/index.html with comparisons against the most recent prior report. Finally copy the new report file to /index.html and update the archive nav on all reports.
 ```
 
 ---
 
 ## 1. Dashboard Access
 
-- **URL:** `https://lookerstudio.google.com/reporting/e33e788e-8223-4dac-80db-afa348e65e1c`
-- **Pages:** 10 total. **Skip page 1** (landing/cover). Analyze pages 2–10.
-- **Navigation:** Use the page selector tabs at the top of the dashboard. Click each tab in order.
+- **URL:** `https://lookerstudio.google.com/reporting/67eab629-df7f-46eb-bc09-caeb2c79fc19`
+- **Account:** Sign in to the Google account that has access (currently signed in via the user's Chrome browser when needed).
+- **Pages (10 total, skip page 1 cover):** Spark Leads (cover) → Spark Digital Ads Leads → Lifetime Overview (skip — new, lifetime data) → Google Ads Overview → Google Ads Insights → Meta Ads Overview → Meta Ads Creative → Google Analytics → Google Search Console → CallRail.
+- **Each page has its own date filter.** You must set the date range on every analysis page individually. Use the page-level date picker → "Fixed" dropdown → hover "Last 7 days" → click "Last 30 days" → check "Include today" → Apply.
 
 ---
 
 ## 2. Per-Page Data Extraction
 
-For each page, capture **both** a screenshot (for visual context) and the page text/accessibility tree (for precise numbers). Record every metric listed below.
+For each page, capture both a screenshot (for visual context) and the page text/accessibility tree (for precise numbers). Use `mcp__claude-in-chrome__get_page_text` to dump the full page text in one call — much faster than scrolling and screenshotting.
 
-### Page 2 — Spark Digital Ads Leads
-- Hot / Warm / Reservation lead counts
-- Lead names, statuses, sources
-- Date range of leads shown
-- **Insight focus:** Lead quality, follow-up status, pipeline health
+### Spark Digital Ads Leads
+- KPI card counts: Warm, Sales Visit/Meeting, Hot, Reservation
+- Hot Leads & Reservations table (date, name, ad source, status)
+- Lead source mix from the table
 
-### Page 3 — KPI Page
-- Total Spend (all channels)
-- Total Impressions, Clicks, Leads
-- CPL (Cost Per Lead), CPC (Cost Per Click)
-- Channel breakdown (Google vs Meta spend/leads)
-- Month-over-month trends if visible
-- **Insight focus:** Budget efficiency, ROI, channel allocation
+### Google Ads Overview
+- Total: Clicks, CTR, Impressions
+- Conversions, Conv Rate, CPL, CPC, Cost
+- Campaign-Level Breakdown (Search_Branded, Search_Non-Branded_Sarasota, Search_Competitors, Search_Non-Branded_Key Feeder Markets) — capture impressions/clicks/conversions/cost per campaign
+- Top search keywords (top 10)
+- Conversions by device (mobile/computer/tablet %)
+- Agents vs Non-Agents (% split)
+- Top performing ad copy
 
-### Page 4 — Google Ads Overview
-- CTR, Conversion Rate, CPC
-- Campaign-level performance
-- Location targeting results
-- Top keywords
-- **Insight focus:** Google Ads health, top performers, waste
+### Google Ads Insights
+- Clicks by age bracket
+- Clicks by gender
+- Website Form Submissions (count + table)
+- Phone Call Leads (count + table)
 
-### Page 5 — Google Ads Insights
-- Demographics (age, gender breakdown)
-- Form submissions count
-- Phone call leads count
-- Device breakdown
-- **Insight focus:** Who's responding, conversion paths
+### Meta Ads Overview
+- Total: Link clicks, CTR, Impressions, Leads, Conv Rate, CPL, Cost, CPC
+- Campaign-Level Breakdown (Prospecting Sarasota, Prospecting Feeder, Remarketing) — impressions/clicks/leads/CPL/cost per campaign
+- Lead Insights table (recent leads + sources)
 
-### Page 6 — Meta Ads Overview
-- CTR, Conversion Rate, CPL, CPC
-- Campaign-level performance
-- Location/audience targeting
-- **Insight focus:** Meta/Instagram ad health
+### Meta Ads Creative
+- Top creatives by leads (campaign × ad × leads × CPL × video views × engagements)
 
-### Page 7 — Meta Ads Insights
-- Lead details by source/campaign
-- Lead quality indicators
-- Ad creative performance if shown
-- **Insight focus:** Meta lead quality and volume
+### Google Analytics
+- Active Users (with delta % from prior)
+- New Users (with delta %)
+- Views (with delta %)
+- Avg Pages per User (with delta %)
+- Sessions by Source/Campaign (google, meta, direct, yourobserver)
+- Top Pages with bounce rate + avg time
+- Channel Mix (organic vs paid breakdown)
 
-### Page 8 — Google Analytics
-- Users, New Users, Page Views
-- Pages per User, Avg Session Duration
-- Top channels (organic, paid, direct, referral, social)
+### Google Search Console
+- Average Position (with delta %)
+- Query count (with delta %)
+- Impressions (with delta %)
+- Top search terms (top 10) with impressions/clicks/CTR
 - Top landing pages
-- Bounce rate / engagement rate
-- **Insight focus:** Website engagement, traffic quality
 
-### Page 9 — Google Search Console
-- Average Position
-- Total Queries, Impressions, Clicks
-- Top search terms (with position & CTR)
-- Top landing pages
-- **Insight focus:** Organic search visibility, keyword wins
-
-### Page 10 — CallRail
-- Total Calls, First-Time Callers, Answered Calls
-- Missed call count / rate
-- Source breakdown (which campaigns drive calls)
-- Call duration averages
-- **Insight focus:** Phone engagement, responsiveness, missed opportunities
+### CallRail
+- Total Calls, First Time Callers, Answered Calls, Missed Calls (with deltas)
+- Answer Rate, Avg Duration
+- Calls by Source (table: total/first time/leads per source)
 
 ---
 
-## 3. Analysis Framework
+## 3. Compute Comparisons
 
-After extracting all data, analyze and assign a status to each section:
+Read the most recent prior report's JSON from `/data/`. For each metric, compute:
 
-### Status Thresholds
+```
+delta_pct = (current - previous) / previous * 100
+```
 
-| Status | Meaning | When to Use |
-|--------|---------|-------------|
-| 🟢 Green | Strong / On Track | Metrics trending up or meeting benchmarks |
-| 🟡 Yellow | Watch / Mixed | Flat trends, some metrics underperforming |
-| 🔴 Red | Action Needed | Declining metrics, wasted spend, missed leads |
+Mark each metric with the appropriate direction class:
+- `--up` (green): increased and increase is good (leads, conversions, queries, impressions, etc.)
+- `--down` (red): decreased and decrease is bad
+- `--good-down` (green): decreased and decrease is good (CPL, CPC, missed calls, search position, bounce rate)
+- `--bad-up` (red): increased and increase is bad (CPL, missed calls, search position)
+- `--flat` (muted): change less than 2%
 
-### Section-Specific Guidance
+---
 
-**Budget & ROI (KPI Page)**
-- 🟢 CPL under $250 and improving; spend balanced across channels
-- 🟡 CPL $250–$400 or one channel underperforming
-- 🔴 CPL above $400 or significant spend with few leads
+## 4. Status Framework
 
-**Google Ads Performance**
-- 🟢 CTR > 3%, Conv Rate > 5%, strong keyword performance
-- 🟡 CTR 2–3%, Conv Rate 3–5%, some wasted keywords
-- 🔴 CTR < 2%, Conv Rate < 3%, high CPC with low conversions
+Assign a section status (`green` / `yellow` / `red`) to:
+- Executive Summary
+- Budget & ROI
+- Google Ads
+- Meta Ads
+- Website & Organic
+- Lead Pipeline & Phone
 
-**Meta Ads Performance**
-- 🟢 Strong lead volume, CPL competitive with Google, good engagement
-- 🟡 Decent volume but CPL rising or engagement flat
-- 🔴 Low leads, high CPL, poor engagement
+### Section thresholds
+
+**Budget & ROI**
+- 🟢 CPL trending down or flat under $250
+- 🟡 CPL flat $250-$400 or one channel underperforming
+- 🔴 CPL rising above $400 or significant spend with few leads
+
+**Google Ads**
+- 🟢 Conv Rate above 1.2% with conversions trending up
+- 🟡 Conv Rate 0.8-1.2% or CTR declining
+- 🔴 Conv Rate under 0.8% with high CPC
+
+**Meta Ads**
+- 🟢 CPL under $150 with strong volume
+- 🟡 CPL $150-$220 or volume flat with cost rising
+- 🔴 CPL over $220 with declining lead quality
 
 **Website & Organic**
-- 🟢 User growth > 10% MoM, strong organic channel, good engagement
-- 🟡 Flat traffic, organic stable but not growing
-- 🔴 Traffic declining, high bounce rate, poor engagement
+- 🟢 Organic queries/impressions growing 20%+
+- 🟡 Mostly flat
+- 🔴 Traffic declining with no organic offset
 
 **Lead Pipeline**
-- 🟢 Strong lead flow, high answer rate (>80%), good follow-up
-- 🟡 Moderate leads, some missed calls, follow-up gaps
-- 🔴 Low leads, high missed call rate, poor follow-up
+- 🟢 Hot/warm count growing, answer rate >85%
+- 🟡 Pipeline flat, answer rate 70-85%
+- 🔴 Pipeline shrinking, answer rate <70%
 
 ---
 
-## 4. Report Writing Guidelines
+## 5. Output Files
 
-### Voice & Tone
-- **Executive-level:** Assume the reader is a busy decision-maker, not a marketer
-- **Plain English:** No jargon. Say "cost per lead" not "CPL" (or define it on first use)
-- **"So what?" first:** Lead every card with the insight, not the number
-- **Actionable:** Include one recommended action per card when warranted
+For a report covering period ending `YYYY-MM-DD`:
 
-### Insight Card Structure
-Each card should contain:
-1. **Status chip** (🟢/🟡/🔴) + **Headline** (e.g., "Paid Ads: Money Well Spent")
-2. **2-3 narrative sentences** explaining what happened and why it matters
-3. **2-4 highlighted metrics** (the numbers that back up the narrative)
-4. **Recommended action** (optional, when there's a clear next step)
+1. **`/data/YYYY-MM-DD.json`** — structured metrics snapshot. Match the schema of the most recent prior report's JSON (see `/data/2026-04-25.json` for reference).
+2. **`/reports/YYYY-MM-DD/index.html`** — full report with comparison deltas vs prior period.
+3. **`/index.html`** — root copy of the latest report for the bare URL. Just `cp` the new report file here.
+4. **Update archive nav** — add the new report to the dropdown list in:
+   - `/index.html`
+   - `/reports/YYYY-MM-DD/index.html` (this period — mark `is-current`)
+   - All previously archived reports (`/reports/*/index.html`) — un-mark "Latest" tag from previous report
+
+The report HTML uses Cormorant Garamond (display serif) + Manrope (sans body) via Google Fonts, deep navy + gold + cream palette, animated bar charts, scroll-triggered reveals, and a floating archive nav. See `/reports/2026-04-25/index.html` for the canonical template.
+
+---
+
+## 6. Re-Running on Demand
+
+From this directory:
+
+```bash
+# 1. Open Looker dashboard in Chrome (auth required)
+# 2. Run Claude Code with the prompt at the top of this file
+# 3. Locally preview before committing:
+python3 -m http.server 8765
+# Open http://localhost:8765
+```
+
+When happy, commit and push:
+
+```bash
+git add data/ reports/ index.html
+git commit -m "feat(report): YYYY-MM-DD period"
+git push
+```
+
+Vercel auto-deploys from `main`.
+
+---
+
+## 7. Biweekly Schedule
+
+The cadence is every 2 weeks. Set a reminder via the Claude Code `/schedule` skill to fire a generation request automatically. The schedule prompt should include:
+
+> "Generate the next Mira Mar marketing report. Read /Users/dannybreckenridge/Documents/Clear ph/Clients/Mira Mar/Looker Analysis/generate-report.md, follow it to extract Looker data for the last 30 days, build the new archived report, and commit + push."
+
+---
+
+## 8. Voice & Tone
+
+- **Executive-level:** assume a busy decision-maker, not a marketer
+- **Plain English:** define jargon on first use ("cost per lead", not "CPL")
+- **"So what?" first:** lead each card with the insight, not the number
+- **One recommendation per section** when there's a clear next step
+- **Comparison built-in:** every metric should show the delta vs prior period
+
+### Section card structure
+1. Status chip (🟢/🟡/🔴) + headline
+2. Editorial 2-3 sentence narrative (in serif, max ~64 chars wide)
+3. 3-4 stat cards with values + delta arrows
+4. 1-2 charts (animated bar fills)
+5. Optional `Recommendation` callout
 
 ### Executive Summary
-- Overall health verdict (one sentence)
-- 3-4 key takeaways as bullet points
-- One thing to watch
-- Bottom-line stat (e.g., "$X spent → Y leads at $Z/lead")
+- Overall verdict (one sentence)
+- 3-4 key takeaways embedded in the narrative
+- Headline stat grid (4 KPIs with deltas)
+- Spend-by-channel mini chart
 
 ---
 
-## 5. Output
+## 9. Checklist
 
-Write the completed report to `report.html` in this directory. The HTML file is self-contained with inline CSS. Update:
-- The report month/year in the header
-- The generation date in the footer
-- All insight card content
-- All metric values
-- All status indicators
-
-After writing, open the file in Chrome to verify it renders correctly.
-
----
-
-## 6. Checklist
-
-- [ ] Navigated all 9 data pages (skipped page 1)
-- [ ] Extracted metrics from each page
+- [ ] Set Last 30 days + Include today on every analysis page
+- [ ] Captured metrics from all 9 data pages
+- [ ] Computed comparisons against most recent prior report
 - [ ] Assigned status to each section
-- [ ] Wrote executive summary
-- [ ] Wrote all 5 insight cards
-- [ ] Updated report.html with current data
-- [ ] Verified report renders in browser
+- [ ] Wrote `/data/YYYY-MM-DD.json`
+- [ ] Wrote `/reports/YYYY-MM-DD/index.html`
+- [ ] Copied to `/index.html`
+- [ ] Updated archive nav links in all reports (mark new as Latest, un-mark old)
+- [ ] Previewed locally with `python3 -m http.server 8765`
+- [ ] Committed + pushed to `main`

@@ -1,0 +1,123 @@
+{
+  "id": "2026-03-11",
+  "label": "Feb 11 – Mar 11, 2026",
+  "period_start": "2026-02-11",
+  "period_end": "2026-03-11",
+  "generated_at": "2026-03-12",
+  "status": {
+    "executive_summary": "green",
+    "budget_roi": "yellow",
+    "google_ads": "yellow",
+    "meta_ads": "green",
+    "website_organic": "yellow",
+    "lead_pipeline": "yellow"
+  },
+  "summary": {
+    "total_spend": 16681,
+    "total_leads": 67,
+    "cost_per_lead": 249,
+    "google_ctr_pct": 10.0,
+    "narrative": "Overall strong month. A combined spend of $16.7K generated 67 leads at $249 each — a solid result driven primarily by Meta's efficiency. Website traffic surged 45%, phone calls jumped 80%, and the sales pipeline is active with 23 warm leads and 2 reservations."
+  },
+  "spend_by_channel": {
+    "google_search": 11798,
+    "meta_instagram": 4883
+  },
+  "budget_roi": {
+    "total_spend": 16681,
+    "total_leads": 67,
+    "cost_per_lead": 249,
+    "impressions": 150000,
+    "cpl_by_campaign": [
+      { "campaign": "Branded Search", "cpl": 39, "channel": "google" },
+      { "campaign": "Meta Feeder Mkt", "cpl": 66, "channel": "meta" },
+      { "campaign": "Meta Sarasota", "cpl": 150, "channel": "meta" },
+      { "campaign": "Google Non-Brand", "cpl": 525, "channel": "google" },
+      { "campaign": "Google Feeder Mkt", "cpl": 1113, "channel": "google" },
+      { "campaign": "Google Competitors", "cpl": 1868, "channel": "google" }
+    ]
+  },
+  "google_ads": {
+    "ctr_pct": 10.0,
+    "conv_rate_pct": 0.76,
+    "cpc": 4.66,
+    "conversions": 21,
+    "form_submissions": 22,
+    "phone_call_leads": 6,
+    "device_split": { "desktop_pct": 45, "mobile_pct": 33 },
+    "demographics_skew": "55-65+, gender roughly even",
+    "conversions_by_campaign": [
+      { "campaign": "Non-Brand Sarasota", "conversions": 14 },
+      { "campaign": "Branded Search", "conversions": 5 },
+      { "campaign": "Feeder Markets", "conversions": 1 },
+      { "campaign": "Competitors", "conversions": 1 }
+    ],
+    "top_keywords": [
+      "mira mar sarasota",
+      "florida condos for sale",
+      "sarasota condos",
+      "luxury condos sarasota"
+    ]
+  },
+  "meta_ads": {
+    "conv_rate_pct": 1.21,
+    "cost_per_lead": 119,
+    "total_spend": 4883,
+    "leads_30d": 41,
+    "leads_by_campaign": [
+      { "campaign": "Prospecting — Sarasota", "leads": 21 },
+      { "campaign": "Prospecting — Feeder Mkt", "leads": 15 },
+      { "campaign": "Remarketing", "leads": 0 }
+    ],
+    "top_locations": ["Sarasota", "Lakewood Ranch", "Tampa", "Orlando"]
+  },
+  "website_organic": {
+    "active_users": 5800,
+    "active_users_growth_pct": 45,
+    "pages_per_user": 1.8,
+    "pages_per_user_growth_pct": -13,
+    "avg_search_position": 11.3,
+    "search_impressions": 4200,
+    "queries": 91,
+    "queries_growth_pct": 17,
+    "branded_organic_ctr_pct": 11,
+    "sessions_by_source": [
+      { "source": "Google (all)", "sessions": 2497 },
+      { "source": "Direct", "sessions": 1628 },
+      { "source": "Meta", "sessions": 1591 },
+      { "source": "Business Observer", "sessions": 234 },
+      { "source": "Your Observer", "sessions": 171 }
+    ],
+    "bounce_by_page": [
+      { "page": "Our History", "bounce_pct": 8 },
+      { "page": "Residences", "bounce_pct": 9 },
+      { "page": "Amenities", "bounce_pct": 10 },
+      { "page": "Contact", "bounce_pct": 48 },
+      { "page": "Homepage", "bounce_pct": 65 }
+    ]
+  },
+  "lead_pipeline": {
+    "tracked_leads": 42,
+    "ratings": { "hot": 1, "warm": 23, "reservation_holders": 2 },
+    "total_calls": 27,
+    "answer_rate_pct": 70,
+    "first_time_callers": 17,
+    "avg_call_duration_min": 2,
+    "missed_calls": 8,
+    "missed_pct": 30,
+    "calls_by_source": [
+      { "source": "Print Ad", "calls": 12 },
+      { "source": "Google Ads", "calls": 6 },
+      { "source": "Facebook Ads", "calls": 3 },
+      { "source": "Google Organic", "calls": 3 },
+      { "source": "Direct", "calls": 3 }
+    ]
+  },
+  "recommendations": [
+    { "priority": "high", "headline": "Fix the missed call rate", "detail": "8 of 27 calls (30%) went unanswered. At $249 per lead, that's roughly $2K in wasted ad spend." },
+    { "priority": "high", "headline": "Reallocate Google budget", "detail": "Competitors spent $1,868 for one lead, Feeder Markets ran at $1,113/lead. Pause and shift to Meta Prospecting and Branded Search." },
+    { "priority": "medium", "headline": "Improve Google Ads conversion rate", "detail": "Strong 10% CTR but only 0.76% convert. Test landing page improvements." },
+    { "priority": "medium", "headline": "Invest in organic content", "detail": "'mira mar sarasota' converts at 11% CTR organically; queries up 17% to 91." },
+    { "priority": "opportunity", "headline": "Increase Meta budget", "detail": "Meta at $119/lead vs Google's $454 — every dollar shifted yields 3-4x leads." }
+  ]
+}
