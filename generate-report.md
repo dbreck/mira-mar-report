@@ -12,10 +12,25 @@ This is a multi-report archive site:
 
 ---
 
-## Quick-Start Prompt
+## Quick-Start
+
+In Claude Code, in this directory:
 
 ```
-Read generate-report.md and follow it to produce this period's Mira Mar marketing report. Navigate the Looker Studio dashboard, set every page's date filter to "Last 30 days" with Include today checked, extract data from each page, write a /data/YYYY-MM-DD.json snapshot, then build /reports/YYYY-MM-DD/index.html with comparisons against the most recent prior report. Finally copy the new report file to /index.html and update the archive nav on all reports.
+/regen-report             # last 30 days ending today
+/regen-report 2w          # last 2 weeks ending today
+/regen-report 4w          # last 4 weeks ending today
+/regen-report --end 2026-05-09 --weeks 2     # backfill 2 weeks ending May 9
+/regen-report --start 2026-04-26 --end 2026-05-09     # explicit range
+/regen-report 2w --dry-run                   # extract + JSON only, skip HTML/commit
+```
+
+The slash command is defined in `.claude/commands/regen-report.md` and orchestrates everything below — it follows this runbook and pauses for your approval before committing.
+
+If you want to run the steps manually without the slash command, the long-form prompt is:
+
+```
+Read generate-report.md and follow it to produce this period's Mira Mar marketing report. Navigate the Looker Studio dashboard, set every page's date filter to the appropriate Last N days preset with Include today checked, extract data from each page, write a /data/YYYY-MM-DD.json snapshot, then build /reports/YYYY-MM-DD/index.html with comparisons against the most recent prior report. Finally copy the new report file to /index.html and update the archive nav on all reports.
 ```
 
 ---
