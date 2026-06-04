@@ -1,0 +1,212 @@
+{
+  "id": "2026-06-04",
+  "label": "Apr 26 – Jun 4, 2026",
+  "period_start": "2026-04-26",
+  "period_end": "2026-06-04",
+  "period_days": 40,
+  "compare_to": "2026-04-25",
+  "compare_period_days": 30,
+  "period_mismatch_note": "This report covers 40 days vs the prior report's 30 days. Raw-count deltas are inflated by the longer window; rate metrics (CPL, CTR, conv rate) remain comparable.",
+  "generated_at": "2026-06-04",
+  "status": {
+    "executive_summary": "yellow",
+    "budget_roi": "yellow",
+    "google_ads": "green",
+    "meta_ads": "red",
+    "website_organic": "yellow",
+    "lead_pipeline": "yellow"
+  },
+  "summary": {
+    "total_spend": 20597,
+    "total_leads": 77,
+    "cost_per_lead": 267,
+    "google_ctr_pct": 6.9,
+    "narrative": "A mixed, longer 40-day period. Combined spend of $20.6K produced 77 leads at $267 each — more volume than last period, but unit economics slipped 16%. Google Ads remains the workhorse: 39 conversions (+30%) and the paused Feeder Markets campaign was successfully replaced with a low-cost Display awareness play. The concern is Meta: the Sarasota prospecting campaign's cost per lead nearly tripled to $473, dragging Meta's blended CPL to $228. Organic search demand keeps climbing (queries +48%), though average position slipped. The pipeline cooled — no new Hot leads or reservations this period — but sales visits held at 15 and several high-value prospects ($4M–$6M range) are in active dialogue."
+  },
+  "spend_by_channel": {
+    "google_search": 11930.06,
+    "meta_instagram": 8666.74
+  },
+  "budget_roi": {
+    "total_spend": 20596.8,
+    "total_leads": 77,
+    "cost_per_lead": 267,
+    "impressions": 507726,
+    "cpl_by_campaign": [
+      { "campaign": "Search_Branded", "cpl": 45, "channel": "google" },
+      { "campaign": "Meta Remarketing", "cpl": 75, "channel": "meta" },
+      { "campaign": "Meta Feeder Mkt", "cpl": 187, "channel": "meta" },
+      { "campaign": "Google Non-Brand Sarasota", "cpl": 251, "channel": "google" },
+      { "campaign": "Meta Sarasota", "cpl": 473, "channel": "meta" },
+      { "campaign": "Google Competitors", "cpl": 1318, "channel": "google" },
+      { "campaign": "Google Display", "cpl": 1560, "channel": "google", "note": "awareness play — 332K impressions, 1 conversion" }
+    ]
+  },
+  "google_ads": {
+    "ctr_pct": 6.9,
+    "ctr_note": "Search-only CTR (comparable to prior periods). Blended CTR incl. the new Display campaign is 0.8% on 366K impressions.",
+    "conv_rate_pct": 1.27,
+    "cpc": 3.89,
+    "conversions": 39,
+    "form_submissions": 36,
+    "phone_call_leads": 7,
+    "device_split": {
+      "mobile_pct": 69.8,
+      "desktop_pct": 26.5,
+      "tablet_pct": 3.7
+    },
+    "agents_pct": 19.3,
+    "non_agents_pct": 80.7,
+    "demographics_skew": "55-65+, female slight edge (37/33/30)",
+    "conversions_by_campaign": [
+      { "campaign": "Non-Brand Sarasota", "conversions": 23 },
+      { "campaign": "Branded Search", "conversions": 12 },
+      { "campaign": "Competitors", "conversions": 3 },
+      { "campaign": "Display Placements", "conversions": 1 }
+    ],
+    "top_keywords": [
+      "sarasota condos",
+      "florida condos for sale",
+      "mira mar sarasota residences",
+      "mira mar sarasota",
+      "new construction sarasota",
+      "sarasota condos for sale",
+      "waldorf astoria sarasota",
+      "the ritz sarasota",
+      "sarasota waterfront condos for sale",
+      "ritz carlton condos for sale"
+    ],
+    "top_ad": "Mira Mar Residences | Sarasota Luxury Condos | Historic Sarasota Icon Reborn"
+  },
+  "meta_ads": {
+    "conv_rate_pct": 1.21,
+    "cost_per_lead": 228.07,
+    "total_spend": 8666.74,
+    "leads_30d": 38,
+    "ctr_pct": 1.58,
+    "impressions": 141503,
+    "leads_by_campaign": [
+      { "campaign": "Prospecting — Feeder Mkt", "leads": 20, "cpl": 186.89 },
+      { "campaign": "Remarketing", "leads": 9, "cpl": 75.03 },
+      { "campaign": "Prospecting — Sarasota", "leads": 9, "cpl": 472.63 }
+    ],
+    "top_creative": "Image_Where Legacy Takes Residence (Feeder campaign) — 10 leads at $149 CPL; static image now outperforming video for lead gen"
+  },
+  "website_organic": {
+    "active_users": 6400,
+    "active_users_growth_pct": -13.9,
+    "pages_per_user": 1.9,
+    "pages_per_user_growth_pct": -3.8,
+    "avg_search_position": 9.5,
+    "avg_position_growth_pct": 26.5,
+    "search_impressions": 12900,
+    "impressions_growth_pct": 18.3,
+    "queries": 253,
+    "queries_growth_pct": 48.0,
+    "branded_organic_ctr_pct": 2.9,
+    "sessions_by_source": [
+      { "source": "google", "sessions": 3514 },
+      { "source": "meta", "sessions": 1945 },
+      { "source": "direct", "sessions": 895 },
+      { "source": "observer web", "sessions": 224 },
+      { "source": "yourobserver", "sessions": 201 }
+    ],
+    "bounce_by_page": [
+      { "page": "Residences", "bounce_pct": 10.2 },
+      { "page": "Walkable-Location", "bounce_pct": 11.5 },
+      { "page": "Amenities-Services", "bounce_pct": 11.8 },
+      { "page": "Contact", "bounce_pct": 13.2 },
+      { "page": "Gallery", "bounce_pct": 18.0 },
+      { "page": "Team", "bounce_pct": 19.9 },
+      { "page": "Our History", "bounce_pct": 22.2 },
+      { "page": "Homepage", "bounce_pct": 49.9 },
+      { "page": "Welcome", "bounce_pct": 54.8 }
+    ],
+    "top_search_terms": [
+      { "query": "mira mar sarasota", "impressions": 1855, "clicks": 40, "ctr_pct": 2.16 },
+      { "query": "miramar sarasota", "impressions": 1184, "clicks": 34, "ctr_pct": 2.87 },
+      { "query": "mira mar", "impressions": 703, "clicks": 17, "ctr_pct": 2.42 },
+      { "query": "mira mar hotel sarasota", "impressions": 377, "clicks": 11, "ctr_pct": 2.92 },
+      { "query": "mira mar residences", "impressions": 225, "clicks": 18, "ctr_pct": 8.0 }
+    ]
+  },
+  "lead_pipeline": {
+    "tracked_leads": 40,
+    "ratings": {
+      "hot": 0,
+      "warm": 24,
+      "reservation_holders": 0,
+      "sales_visit_meeting": 15
+    },
+    "total_calls": 21,
+    "answer_rate_pct": 76,
+    "first_time_callers": 12,
+    "avg_call_duration_min": 2.46,
+    "missed_calls": 8,
+    "missed_pct": 38,
+    "calls_by_source": [
+      { "source": "Print Ad", "calls": 10 },
+      { "source": "Google Ads", "calls": 6 },
+      { "source": "Direct", "calls": 2 },
+      { "source": "DuckDuckGo Organic", "calls": 1 },
+      { "source": "Facebook Ads", "calls": 1 },
+      { "source": "Google Organic", "calls": 1 }
+    ]
+  },
+  "comparisons": {
+    "vs_2026-04-25": {
+      "period_note": "Current period is 40 days; prior was 30 days. Count deltas inflated ~33% by window length; rates are comparable.",
+      "total_spend": { "prev": 16164, "now": 20597, "delta_pct": 27.4 },
+      "total_leads": { "prev": 70, "now": 77, "delta_pct": 10.0 },
+      "cpl": { "prev": 231, "now": 267, "delta_pct": 15.6 },
+      "google_ctr": { "prev": 8.3, "now": 6.9, "delta_pct": -16.9 },
+      "google_conv_rate": { "prev": 1.66, "now": 1.27, "delta_pct": -23.5 },
+      "google_conversions": { "prev": 30, "now": 39, "delta_pct": 30.0 },
+      "meta_leads": { "prev": 40, "now": 38, "delta_pct": -5.0 },
+      "meta_cpl": { "prev": 172, "now": 228, "delta_pct": 32.6 },
+      "active_users": { "prev": 5200, "now": 6400, "delta_pct": 23.1 },
+      "pages_per_user": { "prev": 2.0, "now": 1.9, "delta_pct": -5.0 },
+      "search_position": { "prev": 7.7, "now": 9.5, "delta_pct": 23.4, "interpretation": "lower is better" },
+      "search_impressions": { "prev": 8000, "now": 12900, "delta_pct": 61.3 },
+      "queries": { "prev": 147, "now": 253, "delta_pct": 72.1 },
+      "total_calls": { "prev": 15, "now": 21, "delta_pct": 40.0 },
+      "answer_rate": { "prev": 87, "now": 76, "delta_pct": -12.6 },
+      "missed_calls": { "prev": 2, "now": 8, "delta_pct": 300.0 },
+      "spark_hot": { "prev": 2, "now": 0, "delta_pct": -100.0 },
+      "spark_warm": { "prev": 31, "now": 24, "delta_pct": -22.6 },
+      "spark_reservations": { "prev": 1, "now": 0, "delta_pct": -100.0 }
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "headline": "Rein in Meta Sarasota prospecting",
+      "detail": "CPL nearly tripled to $473 (9 leads on $4,254). Shift budget toward Feeder Markets ($187 CPL, 20 leads — now the best prospecting campaign) and Remarketing ($75 CPL)."
+    },
+    {
+      "priority": "high",
+      "headline": "Fix phone coverage",
+      "detail": "8 of 21 calls missed (38%) and answer rate fell from 87% to 76%. Half of all calls came from the Print Ad number — make sure that line rings through to sales during business hours."
+    },
+    {
+      "priority": "medium",
+      "headline": "Decide what Display is for",
+      "detail": "New Display Placements campaign spent $1,560 for 332K impressions but 1 conversion. Fine as an awareness play; bad as lead gen. Set the expectation explicitly or cap the budget."
+    },
+    {
+      "priority": "medium",
+      "headline": "Scale the winning image creative",
+      "detail": "\"Where Legacy Takes Residence\" static image drove 12 leads across two ads at ~$149–$359 CPL, beating every video on lead gen. Produce 2-3 variants of this concept."
+    },
+    {
+      "priority": "medium",
+      "headline": "Sharpen Sarasota SEO targeting",
+      "detail": "Queries +48% but average position slipped to 9.5, and much of the new volume is mismatched \"Miramar, FL apartments\" searches with 0 clicks. Lean into Sarasota-specific content to recover position 7-8."
+    },
+    {
+      "priority": "opportunity",
+      "headline": "Re-engage the warm bench for Hot conversions",
+      "detail": "No new Hot leads or reservations this period, but the warm list is high quality: multiple $4M–$6M prospects (Ed B., Walter Cleary, Deborah Kobylt, Gregory Kerchner) in active dialogue. A groundbreaking-milestone event or incentive could convert 1-2 to reservations."
+    }
+  ]
+}
