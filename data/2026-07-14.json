@@ -1,0 +1,223 @@
+{
+  "id": "2026-07-14",
+  "label": "Jun 15 – Jul 14, 2026",
+  "period_start": "2026-06-15",
+  "period_end": "2026-07-14",
+  "period_days": 30,
+  "compare_to": "2026-06-04",
+  "compare_period_days": 40,
+  "period_mismatch_note": "This report covers 30 days vs the prior report's 40 days. Raw-count deltas are deflated ~25% by the shorter window; rate metrics (CPL, CTR, conv rate) remain comparable.",
+  "generated_at": "2026-07-14",
+  "status": {
+    "executive_summary": "green",
+    "budget_roi": "yellow",
+    "google_ads": "yellow",
+    "meta_ads": "green",
+    "website_organic": "yellow",
+    "lead_pipeline": "yellow"
+  },
+  "summary": {
+    "total_spend": 20893,
+    "total_leads": 99,
+    "cost_per_lead": 211,
+    "google_ctr_pct": 6.9,
+    "narrative": "The strongest lead month on record — and on a shorter window than last report. Combined spend of $20.9K produced 99 leads at $211 each, a 21% improvement in unit economics. Meta did the heavy lifting: 80 leads at $127 CPL, with the runaway Sarasota prospecting problem fixed ($473 → $87 CPL) and the new Brochure Download campaign delivering leads at $43. Two reservations landed this period — the first since April. The watch item is Google: search conversions halved to 19 and the Competitors campaign spent $2,979 without a single conversion. Organic demand keeps building (queries +24% on a shorter window), though average search position slipped to 13.9. Phone coverage remains the weak link at a 62% answer rate."
+  },
+  "spend_by_channel": {
+    "google_search": 10766.96,
+    "meta_instagram": 10126.27
+  },
+  "budget_roi": {
+    "total_spend": 20893.23,
+    "total_leads": 99,
+    "cost_per_lead": 211,
+    "impressions": 519996,
+    "cpl_by_campaign": [
+      { "campaign": "Meta Remarketing", "cpl": 33, "channel": "meta" },
+      { "campaign": "Meta Brochure Download", "cpl": 43, "channel": "meta" },
+      { "campaign": "Meta Sarasota", "cpl": 87, "channel": "meta" },
+      { "campaign": "Search_Branded", "cpl": 115, "channel": "google" },
+      { "campaign": "Meta Feeder Mkt Segmented", "cpl": 267, "channel": "meta" },
+      { "campaign": "Google Non-Brand Sarasota", "cpl": 396, "channel": "google" },
+      { "campaign": "Google Display", "cpl": 1783, "channel": "google", "note": "awareness play — 345K impressions, 1 conversion" },
+      { "campaign": "Google Competitors", "cpl": null, "channel": "google", "note": "$2,979 spent, 0 conversions" }
+    ]
+  },
+  "google_ads": {
+    "ctr_pct": 6.9,
+    "ctr_note": "Search-only CTR (comparable to prior periods): 1,663 clicks on 24,054 search impressions. Blended CTR incl. Display is 0.6% on 369K impressions.",
+    "conv_rate_pct": 0.96,
+    "cpc": 5.18,
+    "conversions": 19,
+    "form_submissions": 20,
+    "phone_call_leads": 5,
+    "total_cost": 10766.96,
+    "cost_per_lead": 566.68,
+    "device_split": {
+      "mobile_pct": 64.8,
+      "desktop_pct": 32.5,
+      "tablet_pct": 2.7
+    },
+    "agents_pct": 20.5,
+    "non_agents_pct": 79.5,
+    "demographics_skew": "55-64 leads clicks, then 65+; gender near-even (F 35 / M 33 / Unknown 32)",
+    "conversions_by_campaign": [
+      { "campaign": "Non-Brand Sarasota", "conversions": 14 },
+      { "campaign": "Branded Search", "conversions": 4 },
+      { "campaign": "Display Placements", "conversions": 1 },
+      { "campaign": "Competitors", "conversions": 0 }
+    ],
+    "top_keywords": [
+      "florida condos for sale",
+      "mira mar sarasota",
+      "sarasota condos for sale",
+      "new construction sarasota",
+      "mira mar sarasota residences",
+      "luxury condos sarasota fl",
+      "sarasota waterfront condos for sale",
+      "sarasota condos",
+      "new condos sarasota",
+      "downtown sarasota condos for sale"
+    ],
+    "top_ad": "Mira Mar Residences | Sarasota Luxury Condos | Historic Sarasota Icon Reborn"
+  },
+  "meta_ads": {
+    "conv_rate_pct": 1.21,
+    "cost_per_lead": 126.58,
+    "total_spend": 10126.27,
+    "leads_30d": 80,
+    "ctr_pct": 1.32,
+    "impressions": 151385,
+    "leads_by_campaign": [
+      { "campaign": "Prospecting — Feeder Mkt Segmented", "leads": 23, "cpl": 266.73 },
+      { "campaign": "Prospecting — Sarasota", "leads": 17, "cpl": 86.84 },
+      { "campaign": "Brochure Download", "leads": 14, "cpl": 42.53 },
+      { "campaign": "Remarketing", "leads": 9, "cpl": 33.21 },
+      { "campaign": "Prospecting — Feeder Mkt (legacy)", "leads": 5, "cpl": 109.14 }
+    ],
+    "top_creative": "Image_Building (Brochure Download) — 15 leads at $39.69 CPL; static imagery keeps outperforming video for lead gen"
+  },
+  "website_organic": {
+    "active_users": 6300,
+    "active_users_growth_pct": 33.4,
+    "pages_per_user": 1.7,
+    "pages_per_user_growth_pct": -7.0,
+    "avg_search_position": 13.9,
+    "avg_position_growth_pct": 14.4,
+    "search_impressions": 9600,
+    "impressions_growth_pct": 3.9,
+    "queries": 313,
+    "queries_growth_pct": 13.8,
+    "branded_organic_ctr_pct": 2.9,
+    "sessions_by_source": [
+      { "source": "google", "sessions": 2398 },
+      { "source": "meta", "sessions": 2243 },
+      { "source": "direct", "sessions": 898 },
+      { "source": "IAS email", "sessions": 367 },
+      { "source": "ICYMI Daily Brief", "sessions": 342 }
+    ],
+    "bounce_by_page": [
+      { "page": "Residences", "bounce_pct": 7.8 },
+      { "page": "Amenities", "bounce_pct": 11.1 },
+      { "page": "Team", "bounce_pct": 11.1 },
+      { "page": "Gallery", "bounce_pct": 16.0 },
+      { "page": "Amenities-Services", "bounce_pct": 17.4 },
+      { "page": "Walkable-Location", "bounce_pct": 18.0 },
+      { "page": "Contact", "bounce_pct": 18.3 },
+      { "page": "Our History", "bounce_pct": 19.4 },
+      { "page": "Broker Toolkit", "bounce_pct": 25.4 },
+      { "page": "Homepage", "bounce_pct": 40.9 },
+      { "page": "Welcome", "bounce_pct": 58.0 },
+      { "page": "Brochure Download", "bounce_pct": 61.7 }
+    ],
+    "top_search_terms": [
+      { "query": "mira mar", "impressions": 1034, "clicks": 16, "ctr_pct": 1.55 },
+      { "query": "mira mar sarasota", "impressions": 1030, "clicks": 30, "ctr_pct": 2.91 },
+      { "query": "miramar sarasota", "impressions": 431, "clicks": 22, "ctr_pct": 5.1 },
+      { "query": "mira mar residences sarasota", "impressions": 114, "clicks": 5, "ctr_pct": 4.39 },
+      { "query": "mira mar residences", "impressions": 106, "clicks": 10, "ctr_pct": 9.43 }
+    ]
+  },
+  "lead_pipeline": {
+    "tracked_leads": 29,
+    "ratings": {
+      "hot": 0,
+      "warm": 23,
+      "reservation_holders": 2,
+      "sales_visit_meeting": 6
+    },
+    "total_calls": 13,
+    "answer_rate_pct": 62,
+    "first_time_callers": 11,
+    "avg_call_duration_min": 1.4,
+    "missed_calls": 5,
+    "missed_pct": 38,
+    "calls_by_source": [
+      { "source": "Google Ads", "calls": 3 },
+      { "source": "Direct", "calls": 3 },
+      { "source": "Google Organic", "calls": 2 },
+      { "source": "direct mail EDDM", "calls": 1 },
+      { "source": "E-Blasts", "calls": 1 },
+      { "source": "Facebook Ads", "calls": 1 },
+      { "source": "Print Ad", "calls": 1 },
+      { "source": "Spark", "calls": 1 }
+    ]
+  },
+  "comparisons": {
+    "vs_2026-06-04": {
+      "period_note": "Current period is 30 days; prior was 40 days. Count deltas are deflated ~25% by the shorter window; rates are comparable.",
+      "total_spend": { "prev": 20597, "now": 20893, "delta_pct": 1.4 },
+      "total_leads": { "prev": 77, "now": 99, "delta_pct": 28.6 },
+      "cpl": { "prev": 267, "now": 211, "delta_pct": -21.0 },
+      "google_ctr": { "prev": 6.9, "now": 6.9, "delta_pct": 0.0 },
+      "google_conv_rate": { "prev": 1.27, "now": 0.96, "delta_pct": -24.4 },
+      "google_conversions": { "prev": 39, "now": 19, "delta_pct": -51.3 },
+      "meta_leads": { "prev": 38, "now": 80, "delta_pct": 110.5 },
+      "meta_cpl": { "prev": 228, "now": 127, "delta_pct": -44.5 },
+      "active_users": { "prev": 6400, "now": 6300, "delta_pct": -1.6 },
+      "pages_per_user": { "prev": 1.9, "now": 1.7, "delta_pct": -10.5 },
+      "search_position": { "prev": 9.5, "now": 13.9, "delta_pct": 46.3, "interpretation": "lower is better" },
+      "search_impressions": { "prev": 12900, "now": 9600, "delta_pct": -25.6 },
+      "queries": { "prev": 253, "now": 313, "delta_pct": 23.7 },
+      "total_calls": { "prev": 21, "now": 13, "delta_pct": -38.1 },
+      "answer_rate": { "prev": 76, "now": 62, "delta_pct": -18.4 },
+      "missed_calls": { "prev": 8, "now": 5, "delta_pct": -37.5 },
+      "spark_hot": { "prev": 0, "now": 0, "delta_pct": 0 },
+      "spark_warm": { "prev": 24, "now": 23, "delta_pct": -4.2 },
+      "spark_reservations": { "prev": 0, "now": 2, "delta_pct": null, "note": "first reservations since April — prior period had 0" },
+      "spark_sales_visits": { "prev": 15, "now": 6, "delta_pct": -60.0 }
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "headline": "Pause or rework the Google Competitors campaign",
+      "detail": "$2,979 spent this period with zero conversions (357 clicks at $8.34 each). Redirect that budget to Non-Brand Sarasota — still the top Google converter with 14 leads — or to Meta, where CPL is a quarter of Google's."
+    },
+    {
+      "priority": "high",
+      "headline": "Scale the Brochure Download + Remarketing combo",
+      "detail": "The new Brochure Download campaign produced 14 leads at $43 each and Remarketing 9 at $33 — the two cheapest lead sources across both platforms. Feeder Market Segmented is 6-8x more expensive ($267 CPL); shift a portion of its $6.1K budget toward the winners."
+    },
+    {
+      "priority": "high",
+      "headline": "Fix phone coverage before season",
+      "detail": "Answer rate fell again, from 76% to 62% (5 of 13 calls missed). Volume is low enough that every missed call is a potentially wasted $200+ lead. Confirm ring-through and voicemail follow-up ownership."
+    },
+    {
+      "priority": "medium",
+      "headline": "Diagnose the Google conversion falloff",
+      "detail": "Search conversions halved (39 → 19) on similar spend, and conversion rate slipped below 1%. Review landing-page changes, form tracking, and search-term match quality this month — the traffic is still there (CTR held at 6.9%)."
+    },
+    {
+      "priority": "medium",
+      "headline": "Recover search position with Sarasota-first content",
+      "detail": "Queries grew 24% (on a shorter window) but average position slipped from 9.5 to 13.9, and much of the new impression volume is mismatched \"Miramar, FL apartment\" searches with 0 clicks. Publish Sarasota-specific content to rebuild position 8-10."
+    },
+    {
+      "priority": "opportunity",
+      "headline": "Press the reservation momentum",
+      "detail": "Two reservations landed this period — the first since April — and the warm bench is rich: Fanny Lange ($5-7M budget, call July 20), William Tremko (visit planned, favorites picked), Denise Baskerville (90-day buying window). Prioritize in-person visits for these three in the next two weeks."
+    }
+  ]
+}
