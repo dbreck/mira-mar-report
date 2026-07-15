@@ -39,7 +39,7 @@ Read generate-report.md and follow it to produce this period's Mira Mar marketin
 
 - **URL:** `https://lookerstudio.google.com/reporting/67eab629-df7f-46eb-bc09-caeb2c79fc19`
 - **Account:** Sign in to the Google account that has access (currently signed in via the user's Chrome browser when needed).
-- **Pages (10 total, skip page 1 cover):** Spark Leads (cover) → Spark Digital Ads Leads → Lifetime Overview (skip — new, lifetime data) → Google Ads Overview → Google Ads Insights → Meta Ads Overview → Meta Ads Creative → Google Analytics → Google Search Console → CallRail.
+- **Pages (9 total as of Jul 2026, skip page 1 cover):** Spark Leads (cover) → Spark Digital Ads Leads → Google Ads Overview → Google Ads Insights → Meta Ads Overview → Meta Ads Creative → Google Analytics → Google Search Console → CallRail. (A "Lifetime Overview" page existed briefly in mid-2026 but is no longer in the sidebar.)
 - **Each page has its own date filter.** You must set the date range on every analysis page individually. Use the page-level date picker → "Fixed" dropdown → hover "Last 7 days" → click "Last 30 days" → check "Include today" → Apply.
 
 ---
