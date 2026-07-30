@@ -1,0 +1,287 @@
+{
+  "id": "2026-07-full",
+  "label": "Jul 1 – 30, 2026 (Full Month)",
+  "period_start": "2026-07-01",
+  "period_end": "2026-07-30",
+  "period_days": 30,
+  "compare_to": "2026-07-27",
+  "compare_period_days": 30,
+  "period_mismatch_note": "Both windows are 30 days, but they overlap by 27 days (Jul 1 – 27), so period-over-period deltas are heavily damped. The more meaningful movement is the dashboard-native month-over-month deltas (July vs June), quoted where available: users +92.7%, calls +88.9%, organic impressions +12.2%.",
+  "generated_at": "2026-07-30",
+  "cadence_note": "Full-calendar-month report for July, generated alongside the Jul 16–30 fortnight snapshot (2026-07-30) that was produced for the client review. Both cover activity ending Jul 30.",
+  "status": {
+    "executive_summary": "green",
+    "budget_roi": "green",
+    "google_ads": "yellow",
+    "meta_ads": "green",
+    "website_organic": "yellow",
+    "lead_pipeline": "yellow"
+  },
+  "summary": {
+    "total_spend": 21056,
+    "total_leads": 107,
+    "cost_per_lead": 197,
+    "google_ctr_search_only_pct": 7.6,
+    "answer_rate_pct": 71,
+    "narrative": "July closed as the strongest month of the year: $21.1K in paid media produced 107 leads at a blended $197 each, holding June-July's record pace at the best unit economics to date. Meta delivered 78 leads at $116 and Google search converted 28 leads at a 1.48% search-only rate — its best reading this year — with Branded Search at $54 per conversion. The phone recovered without fully healing: 17 calls (+89% vs June), 15 first-time callers, and a 71% answer rate, up from 67% but still short of the 85% target. Site traffic nearly doubled month-over-month (+93%) but most of the increase is Display and unmeasured channels: Display spent $2,682 on 1.33M impressions for one tracked conversion, Microsoft/Bing grew to 916 sessions with no cost data, and a new WSJ summer-ads channel appeared at 474 sessions. The pipeline rebuilt — the warm bench rose from 19 to 24 with 12 new named prospects in July, 8 sales visits or meetings, and 2 reservations holding."
+  },
+  "spend_by_channel": {
+    "google_search": 12044.43,
+    "meta_instagram": 9011.49
+  },
+  "budget_roi": {
+    "total_spend": 21055.92,
+    "total_leads": 107,
+    "cost_per_lead": 197,
+    "impressions": 1508610,
+    "cpl_by_campaign": [
+      { "campaign": "Search_Branded", "cpl": 54, "channel": "google" },
+      { "campaign": "Meta Brochure Download", "cpl": 54, "channel": "meta" },
+      { "campaign": "Meta Sarasota", "cpl": 104, "channel": "meta" },
+      { "campaign": "Meta Feeder Mkt Segmented", "cpl": 217, "channel": "meta" },
+      { "campaign": "Google Non-Brand Sarasota", "cpl": 329, "channel": "google" },
+      { "campaign": "Google Competitors", "cpl": 1857, "channel": "google", "note": "$2,786 spent, 1.5 conversions" },
+      { "campaign": "Google Display", "cpl": 2682, "channel": "google", "note": "awareness play — 1.33M impressions, 1 tracked conversion" }
+    ],
+    "mtd_reconciliation_note": "The Jul 16–30 fortnight report estimated ~112 leads / $27.3K spend for July month-to-date; the full-month extraction reads 107 leads / $21.1K. Ad-platform data revisions and differing lead definitions (Meta KPI leads vs website leads) account for the gap; the full-month figures here are authoritative for July."
+  },
+  "google_ads": {
+    "ctr_pct": 7.6,
+    "ctr_note": "Search-only CTR (comparable to prior periods): 1,892 clicks on 24,962 search impressions. Blended CTR incl. Display is 0.3% on 1.35M impressions.",
+    "conv_rate_pct": 0.65,
+    "conv_rate_search_only_pct": 1.48,
+    "cpc": 2.73,
+    "conversions": 29,
+    "form_submissions": 31,
+    "phone_call_leads": 5,
+    "total_cost": 12044.43,
+    "cost_per_lead": 415.33,
+    "search_only_cost": 9303.37,
+    "search_only_conversions": 28,
+    "search_only_cost_per_lead": 332,
+    "device_split": {
+      "mobile_pct": 67.5,
+      "desktop_pct": 30.5,
+      "tablet_pct": 2.0
+    },
+    "agents_pct": 20.8,
+    "non_agents_pct": 79.2,
+    "demographics_skew": "55-64 leads clicks, then 45-54; gender M 43.7 / F 39.6 / Unknown 16.7",
+    "conversions_by_campaign": [
+      { "campaign": "Non-Brand Sarasota", "conversions": 18.5 },
+      { "campaign": "Branded Search", "conversions": 8 },
+      { "campaign": "Competitors", "conversions": 1.5 },
+      { "campaign": "Display Placements", "conversions": 1 }
+    ],
+    "campaign_detail": [
+      { "campaign": "Search_Non-Branded_Sarasota", "impressions": 14410, "clicks": 1366, "conversions": 18.5, "ctr_pct": 9.45, "cost": 6083.67 },
+      { "campaign": "Search_Branded", "impressions": 461, "clicks": 191, "conversions": 8, "ctr_pct": 43.88, "cost": 434.01 },
+      { "campaign": "Search_Competitors", "impressions": 9958, "clicks": 335, "conversions": 1.5, "ctr_pct": 3.71, "cost": 2785.69 },
+      { "campaign": "Display_Placements_Feeder", "impressions": 1328179, "clicks": 2532, "conversions": 1, "ctr_pct": 0.19, "cost": 2682.38 }
+    ],
+    "top_keywords": [
+      "florida condos for sale",
+      "sarasota condominiums for sale",
+      "luxury condos sarasota",
+      "new construction sarasota",
+      "mira mar sarasota residences",
+      "mira mar sarasota",
+      "new condos sarasota",
+      "mira mar sarasota condos",
+      "sarasota condos for sale",
+      "downtown sarasota condos for sale"
+    ],
+    "top_locations_by_clicks": [
+      { "location": "Sarasota", "clicks": 1350 },
+      { "location": "New York", "clicks": 800 },
+      { "location": "San Jose", "clicks": 600 },
+      { "location": "Chicago", "clicks": 500 },
+      { "location": "North Sarasota", "clicks": 250 }
+    ],
+    "top_ad": "Mira Mar Residences | Sarasota Luxury Condos | Historic Sarasota Icon Reborn"
+  },
+  "meta_ads": {
+    "conv_rate_pct": 1.21,
+    "cost_per_lead": 115.53,
+    "total_spend": 9011.49,
+    "leads_30d": 78,
+    "website_leads_note": "KPI tile reports 78 leads at $115.53; the campaign table's website-lead total is 71 at $126.92. Both recorded per the known tile-vs-table discrepancy; the KPI tile is used in headlines for consistency with prior reports.",
+    "ctr_pct": 1.40,
+    "impressions": 155469,
+    "leads_by_campaign": [
+      { "campaign": "Brochure Download", "leads": 26, "cpl": 53.90 },
+      { "campaign": "Prospecting — Feeder Mkt Segmented", "leads": 23, "cpl": 216.75 },
+      { "campaign": "Prospecting — Sarasota", "leads": 14, "cpl": 103.98 },
+      { "campaign": "Remarketing", "leads": 6, "cpl": 74.74 },
+      { "campaign": "Prospecting — Feeder Mkt (legacy)", "leads": 5, "cpl": 104.93 }
+    ],
+    "top_creative": "Image_Building (Brochure Download) — 25 leads at $56.05 CPL with zero video; static imagery remains the lead engine while Video_Sarasota Lifestyle carries reach (49.9K combined views on Sarasota + Feeder Segmented)",
+    "creative_detail": [
+      { "campaign": "Brochure Download", "ad": "Image_Building", "leads": 25, "cpl": 56.05, "video_views": 0, "engagements": 721 },
+      { "campaign": "Prospecting — Sarasota", "ad": "Video_Sarasota Lifestyle", "leads": 12, "cpl": 106.76, "video_views": 20938, "engagements": 9236 },
+      { "campaign": "Feeder Mkt Segmented", "ad": "Video_Sarasota Lifestyle", "leads": 10, "cpl": 289.53, "video_views": 28963, "engagements": 12426 },
+      { "campaign": "Remarketing", "ad": "Video_Sarasota Lifestyle", "leads": 6, "cpl": 74.74, "video_views": 6037, "engagements": 2773 },
+      { "campaign": "Feeder Mkt (legacy)", "ad": "Image_Where Legacy Takes Residence", "leads": 5, "cpl": 104.93, "video_views": 0, "engagements": 102 }
+    ]
+  },
+  "website_organic": {
+    "active_users": 9700,
+    "active_users_growth_pct": 92.7,
+    "new_users": 9700,
+    "new_users_growth_pct": 95.0,
+    "views": 17500,
+    "views_growth_pct": 95.7,
+    "pages_per_user": 1.8,
+    "pages_per_user_growth_pct": 1.5,
+    "avg_search_position": 13.7,
+    "avg_position_growth_pct": -5.2,
+    "search_impressions": 10000,
+    "impressions_growth_pct": 12.2,
+    "queries": 324,
+    "queries_growth_pct": 6.6,
+    "branded_organic_ctr_pct": 3.17,
+    "growth_note": "Month-over-month deltas (July vs June) are dashboard-native. The near-doubling of users is largely Display: display_placement_feedermarket alone drove 2,185 of 4,547 google sessions. Pages per user held at 1.8, so volume is not deepening engagement.",
+    "new_channel_flag": "Two unmeasured channels this month: Microsoft/Bing paid search grew to 916 sessions (820 non-branded, 96 branded) plus one CallRail 'Bing Ads' call, still with no cost data in the dashboard; and a new digital/wsj_summer_ads channel appeared with 474 sessions.",
+    "sessions_by_source": [
+      { "source": "google", "sessions": 4547 },
+      { "source": "meta", "sessions": 2518 },
+      { "source": "microsoft", "sessions": 916 },
+      { "source": "direct", "sessions": 890 },
+      { "source": "digital (WSJ summer ads)", "sessions": 474 }
+    ],
+    "google_sessions_detail": [
+      { "campaign": "display_placement_feedermarket", "sessions": 2185 },
+      { "campaign": "search_non-branded", "sessions": 1356 },
+      { "campaign": "(organic)", "sessions": 402 },
+      { "campaign": "search_competitors", "sessions": 321 },
+      { "campaign": "search_branded", "sessions": 266 }
+    ],
+    "avg_session_duration_by_device": { "desktop": "02:38", "tablet": "01:39", "mobile": "01:24" },
+    "bounce_by_page": [
+      { "page": "Residences", "bounce_pct": 7.2 },
+      { "page": "Gallery — Amenities", "bounce_pct": 2.3 },
+      { "page": "Gallery — Residences", "bounce_pct": 8.8 },
+      { "page": "Gallery — Video", "bounce_pct": 11.0 },
+      { "page": "Amenities", "bounce_pct": 12.1 },
+      { "page": "Our History", "bounce_pct": 15.4 },
+      { "page": "Walkable-Location", "bounce_pct": 11.8 },
+      { "page": "Gallery", "bounce_pct": 15.5 },
+      { "page": "Team", "bounce_pct": 15.5 },
+      { "page": "Contact", "bounce_pct": 17.7 },
+      { "page": "Services", "bounce_pct": 23.0 },
+      { "page": "Broker Toolkit", "bounce_pct": 27.9 },
+      { "page": "Homepage", "bounce_pct": 45.1 },
+      { "page": "Welcome", "bounce_pct": 51.5 },
+      { "page": "Brochure Download", "bounce_pct": 65.6 }
+    ],
+    "top_search_terms": [
+      { "query": "mira mar sarasota", "impressions": 1103, "clicks": 35, "ctr_pct": 3.17 },
+      { "query": "mira mar", "impressions": 1088, "clicks": 14, "ctr_pct": 1.29 },
+      { "query": "miramar sarasota", "impressions": 503, "clicks": 31, "ctr_pct": 6.16 },
+      { "query": "mira mar residences sarasota", "impressions": 187, "clicks": 5, "ctr_pct": 2.67 },
+      { "query": "luxury apartments in miramar", "impressions": 183, "clicks": 0, "ctr_pct": 0 },
+      { "query": "miramar luxury apartments", "impressions": 169, "clicks": 0, "ctr_pct": 0 },
+      { "query": "mira mar hotel sarasota", "impressions": 165, "clicks": 7, "ctr_pct": 4.24 },
+      { "query": "mira mar residences", "impressions": 140, "clicks": 10, "ctr_pct": 7.14 }
+    ],
+    "wrong_city_impressions": 960,
+    "wrong_city_note": "Roughly 960 impressions this month came from Miramar, FL apartment/property-management searches with zero clicks."
+  },
+  "lead_pipeline": {
+    "tracked_leads": 28,
+    "ratings": {
+      "hot": 0,
+      "warm": 24,
+      "reservation_holders": 2,
+      "sales_visit_meeting": 8
+    },
+    "new_leads_in_period": 12,
+    "new_leads_source_mix": { "google_ads": 4, "facebook_ads": 6, "instagram_ads": 1, "icymi_daily_brief": 1 },
+    "agent_registrations": 4,
+    "total_calls": 17,
+    "answer_rate_pct": 71,
+    "first_time_callers": 15,
+    "avg_call_duration_min": 1.6,
+    "missed_calls": 5,
+    "missed_pct": 29,
+    "calls_by_source": [
+      { "source": "Direct", "calls": 4 },
+      { "source": "Google Ads", "calls": 4 },
+      { "source": "Print Ad", "calls": 2 },
+      { "source": "Google Organic", "calls": 2 },
+      { "source": "Bing Ads", "calls": 1 },
+      { "source": "direct mail EDDM", "calls": 1 },
+      { "source": "E-Blasts", "calls": 1 },
+      { "source": "Facebook Ads", "calls": 1 },
+      { "source": "Spark", "calls": 1 }
+    ],
+    "data_quirk_note": "CallRail KPI tiles are authoritative (17 total / 12 answered → 5 missed, 71% answer rate). The lower Phone Call Summary widget reports 8 missed calls and is ignored, per the known dashboard conflict. Every Print Ad and Google Organic call this month went unanswered."
+  },
+  "comparisons": {
+    "vs_2026-07-27": {
+      "period_note": "Both periods are 30 days, but they overlap by 27 days — deltas are heavily damped and mostly confirm stability. Month-over-month movement vs June is quoted from dashboard-native deltas in the website/organic and phone sections.",
+      "total_spend": { "prev": 21587, "now": 21056, "delta_pct": -2.5 },
+      "total_leads": { "prev": 111, "now": 107, "delta_pct": -3.6 },
+      "cpl": { "prev": 194, "now": 197, "delta_pct": 1.5 },
+      "google_ctr": { "prev": 7.7, "now": 7.6, "delta_pct": -1.3, "interpretation": "search-only" },
+      "google_conv_rate": { "prev": 0.63, "now": 0.65, "delta_pct": 3.2, "interpretation": "blended incl. Display; search-only rose 1.42% → 1.48%, best of year" },
+      "google_conversions": { "prev": 28, "now": 29, "delta_pct": 3.6 },
+      "google_cpc": { "prev": 2.76, "now": 2.73, "delta_pct": -1.1 },
+      "google_form_submissions": { "prev": 28, "now": 31, "delta_pct": 10.7 },
+      "google_phone_call_leads": { "prev": 3, "now": 5, "delta_pct": 66.7 },
+      "meta_leads": { "prev": 83, "now": 78, "delta_pct": -6.0 },
+      "meta_cpl": { "prev": 113.47, "now": 115.53, "delta_pct": 1.8 },
+      "meta_spend": { "prev": 9418, "now": 9011, "delta_pct": -4.3 },
+      "active_users": { "prev": 9400, "now": 9700, "delta_pct": 3.2, "mom_note": "+92.7% vs June (dashboard-native)" },
+      "pages_per_user": { "prev": 1.8, "now": 1.8, "delta_pct": 0.0 },
+      "search_position": { "prev": 13.8, "now": 13.7, "delta_pct": -0.7, "interpretation": "lower is better; -5.2% vs June" },
+      "search_impressions": { "prev": 10100, "now": 10000, "delta_pct": -1.0, "mom_note": "+12.2% vs June" },
+      "queries": { "prev": 322, "now": 324, "delta_pct": 0.6, "mom_note": "+6.6% vs June" },
+      "total_calls": { "prev": 15, "now": 17, "delta_pct": 13.3, "mom_note": "+88.9% vs June" },
+      "answer_rate": { "prev": 67, "now": 71, "delta_pct": 6.0 },
+      "missed_calls": { "prev": 5, "now": 5, "delta_pct": 0.0 },
+      "first_time_callers": { "prev": 14, "now": 15, "delta_pct": 7.1, "mom_note": "+150% vs June" },
+      "spark_hot": { "prev": 0, "now": 0, "delta_pct": 0 },
+      "spark_warm": { "prev": 19, "now": 24, "delta_pct": 26.3 },
+      "spark_reservations": { "prev": 2, "now": 2, "delta_pct": 0.0 },
+      "spark_sales_visits": { "prev": 6, "now": 8, "delta_pct": 33.3 }
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "headline": "Cap and geo-tighten Display before August",
+      "detail": "Display spent $2,682 on 1.33 million impressions for one tracked conversion, and it is the main reason site users nearly doubled month-over-month with no gain in pages per user. Top click geographies remain New York, San Jose and Chicago rather than Sarasota or genuine feeder markets. Tighten geo and placements, cap the budget, and judge it on form fills."
+    },
+    {
+      "priority": "high",
+      "headline": "Phone coverage improved but is still below target",
+      "detail": "The answer rate rose from 67% to 71% while call volume jumped 89% — 17 calls, 15 of them first-time callers. But 5 calls still went unanswered, including every Print Ad and Google Organic call. The fortnight ending Jul 30 showed 88% is achievable; hold the backup ring group and voicemail ownership so the full-month number reaches the 85% target in August."
+    },
+    {
+      "priority": "high",
+      "headline": "Rebalance Meta toward Brochure Download",
+      "detail": "Brochure Download delivered 26 leads at $54 — the cheapest volume in the account — while Feeder Market Segmented absorbed $4,985 (55% of Meta spend) at $217 per lead. Moving a quarter of the Feeder budget to Brochure Download and Sarasota prospecting buys roughly 20 additional leads at current rates."
+    },
+    {
+      "priority": "medium",
+      "headline": "Microsoft/Bing is growing and still invisible",
+      "detail": "Microsoft paid search grew to 916 sessions in July (820 non-branded, 96 branded) plus one CallRail 'Bing Ads' call — up from 796 in the prior window — and there is still no Microsoft cost or conversion data in the dashboard. Until the source is added, July's true blended cost per lead is understated."
+    },
+    {
+      "priority": "medium",
+      "headline": "New WSJ summer-ads channel appeared — confirm tracking",
+      "detail": "A digital/wsj_summer_ads source delivered 474 sessions this month, alongside mansionglobal.com and observer web banner referrals. Confirm what was purchased, whether it carries cost data, and give it UTM-consistent tagging so print/digital sponsorships can be judged next to paid search and social."
+    },
+    {
+      "priority": "medium",
+      "headline": "Decide on Competitors: 1.5 conversions for $2,786",
+      "detail": "The Competitors campaign ran at roughly $1,857 per lead against a blended $197. Either trim it to a small brand-defense budget or move the money to Non-Brand Sarasota ($329 per lead, 18.5 conversions) and Branded Search ($54 per lead)."
+    },
+    {
+      "priority": "opportunity",
+      "headline": "Work the rebuilt warm bench — 24 warm, 12 new in July",
+      "detail": "The warm bench recovered from 19 to 24 with five agent-status prospects added in late July (Tomasa Fahey, Cathi Cooper, Jonathan Garcia, Santos Lou Rodriguez, Gail Trippi). William Tremko has favorite units picked (1404, 1504, 1206) and wants a showroom visit; Judith Tribble completed a Zoom presentation; Fanny Lange is shopping the $5–7M range with an Aug/Sep visit in play. Sales visits/meetings doubled to 8 — convert them while interest is live."
+    }
+  ]
+}
