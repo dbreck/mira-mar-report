@@ -9,6 +9,8 @@ This is a multi-report archive site:
 - Each period's metrics are also stored as JSON at `/data/YYYY-MM-DD.json` so future reports can compute deltas.
 - An archive nav (top-right pill) appears on every report and links between them.
 - The intended cadence is **biweekly** (every 2 weeks).
+- **Naming collision rule:** if `/reports/<END>/` is already taken by another report ending the same day (e.g. `2026-07-30` is the Jul 16–30 fortnight), use a qualifier ID instead of a fake date — the July full month lives at `/reports/2026-07-full/` with `/data/2026-07-full.json`.
+- **Looker share-link warning:** edit-rights share links do NOT preserve date filters — every page loads its own stale range. Always set the range per page (each of the 8 data pages has an independent filter) from a signed-in local Chrome.
 
 ---
 
