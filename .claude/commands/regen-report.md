@@ -38,7 +38,9 @@ If `/reports/<END>/` already exists, **ask before overwriting**.
    - URL: `https://lookerstudio.google.com/reporting/67eab629-df7f-46eb-bc09-caeb2c79fc19`
    - If not signed in or not loaded, ask the user to handle it before continuing.
 2. Browser tools (`mcp__claude-in-chrome__*`) are deferred — load them via `ToolSearch` before calling them. Bare minimum: `tabs_context_mcp`, `navigate`, `computer`, `get_page_text`.
-3. Read `generate-report.md` and follow it. **Do not paraphrase its steps — execute them.** That document is the source of truth for which pages to extract and which metrics to capture.
+3. **Multiple Chrome instances may be connected.** Call `list_connected_browsers`; if more than one, ask the user which has Looker open (or use `switch_browser` to let them click Connect in the right window). Note: even in the right browser, **Looker date-filter state is per-tab** — a tab you open fresh will NOT inherit ranges the user already set in their own tab, and the extension cannot adopt their existing tab. Plan to set ranges yourself, or use the handoff below.
+4. **Date handoff (fastest path):** after opening the dashboard in your controlled tab, offer: "Set Jul-30-style Fixed ranges on all 8 data pages in my tab (the one in the Claude tab group), then say done." A human sets 7 date pickers faster than automation; you then just sweep pages with `get_page_text`.
+5. Read `generate-report.md` and follow it. **Do not paraphrase its steps — execute them.** That document is the source of truth for which pages to extract and which metrics to capture.
 
 ## Looker date-range mapping
 
@@ -80,7 +82,19 @@ Direction classes for each delta on the report:
 
 If `--dry-run`, stop here. Show the user the JSON + comparison summary and exit. Do not touch HTML, archive nav, or git.
 
-## Build
+## Build (fan-out)
+
+Save extraction notes progressively to the scratchpad as you sweep pages (one section per Looker page). Then parallelize with subagents — these reports are expensive and the build stages are independent:
+
+1. **In parallel** (single message, two Agent calls):
+   - `json-builder` — writes `/data/<END>.json` from the extraction notes, matching the most recent prior JSON's schema exactly, computing all deltas, assigning section statuses per the thresholds, and drafting the executive narrative. Must validate with `python3 json.load` before finishing. Never fabricate a number — null + note if missing.
+   - `nav-updater` — adds the new entry (href `/reports/<END>/`, date label matching existing style) to the archive nav in every existing `/reports/*/index.html`, moves the `Latest` tag off the prior report. Does NOT touch root `/index.html` (it gets replaced) or create the new report folder.
+2. **After the JSON lands**: `html-builder` — builds `/reports/<END>/index.html` using the MOST RECENT prior report as the visual template (the design evolves; 2026-04-25 is stale), content from the JSON + extraction notes, replicates the nav with the new entry marked `is-current` + `Latest`, then copies to root `/index.html`.
+3. Verify yourself: JSON parses, exactly one `Latest` per nav, root mirror identical, numbers spot-check against extraction notes.
+
+Extraction itself stays in the main session (the browser is stateful and single-tab).
+
+## Build (visual template details)
 
 Use `/reports/2026-04-25/index.html` as the canonical visual template. **Do not redesign it.** Same:
 
@@ -134,6 +148,13 @@ git push
 Vercel auto-deploys from `main`. Confirm the live site shows the new report at `https://mira-mar-report.vercel.app`.
 
 Stop the local preview server.
+
+## Post-ship: dashboard Reports tab
+
+After the Vercel deploy is confirmed live, update the Mira Mar dashboard repo at `~/Applications/miramar-dashboard`:
+
+- `components/tabs/ReportsTab.tsx` → set `LATEST_REPORT_URL` to `https://mira-mar-report.vercel.app/reports/<END>/` and the card kicker to `Latest · <Mon D, YYYY>`.
+- Commit just that file. **The snapshot cron commits to `origin/main` twice daily** — expect the push to be rejected; `git stash push <dirty files>`, `git pull --rebase`, `git push`, `git stash pop`.
 
 ## Final summary
 
