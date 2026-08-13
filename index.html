@@ -965,7 +965,9 @@
   .v2-recs-panel__kicker { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-soft); font-weight: 700; }
   .v2-recs-panel__title { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--cream); line-height: 1.15; }
   .v2-recs--big { display: flex; gap: 0.55rem; flex-wrap: wrap; flex: 1; }
-  .v2-recs--big .v2-rec { font-size: 1.05rem; padding: 0.55rem 1.1rem; border-color: color-mix(in oklab, var(--gold) 40%, transparent); background: color-mix(in oklab, var(--card-bg) 55%, transparent); }
+  .v2-recs--big { flex-wrap: nowrap; }
+  @media (max-width: 1100px) { .v2-recs--big { flex-wrap: wrap; } }
+  .v2-recs--big .v2-rec { font-size: 0.78rem; white-space: nowrap; padding: 0.42rem 0.85rem; border-color: color-mix(in oklab, var(--gold) 40%, transparent); background: color-mix(in oklab, var(--card-bg) 55%, transparent); }
   .v2-tip { position: relative; cursor: default; }
   .v2-tip:hover .v2-tip__img, .v2-tip:focus-within .v2-tip__img, .v2-tip:focus .v2-tip__img { display: block; }
   .v2-tip__img {
