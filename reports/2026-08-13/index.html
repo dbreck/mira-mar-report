@@ -922,7 +922,7 @@
   .v2-lb { width: 100%; border-collapse: collapse; font-size: 0.64rem; }
   .v2-lb th { text-align: left; font-size: 0.54rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 0 0.4rem 0.35rem 0; }
   .v2-lb td { padding: 0.28rem 0.4rem 0.28rem 0; color: var(--cream); border-top: 1px solid color-mix(in oklab, var(--card-edge) 55%, transparent); font-variant-numeric: tabular-nums; }
-  .v2-lb td:first-child { max-width: 9.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v2-lb td:first-child { white-space: nowrap; }
   .v2-lb .num { text-align: right; }
   .v2-lb__bar { display: inline-block; height: 8px; border-radius: 3px; background: var(--gold); vertical-align: middle; }
   /* website tiles */
@@ -938,6 +938,45 @@
   .v2-recs { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-left: auto; }
   .v2-rec { font-size: 0.62rem; color: var(--cream); border: 1px solid var(--card-edge); border-radius: 999px; padding: 0.3rem 0.7rem; }
   .v2-rec b { color: var(--gold-soft); font-weight: 600; }
+
+  /* v2.1 — surface tiers + status tints + featured recs + creative tooltips */
+  .viz-panel {
+    background:
+      radial-gradient(ellipse at 12% -8%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 46%),
+      radial-gradient(ellipse at 88% 108%, color-mix(in oklab, var(--green) 9%, transparent), transparent 44%),
+      linear-gradient(160deg, var(--surface-grad-from), var(--surface-grad-to));
+  }
+  .v2-card { position: relative; }
+  .v2-card--dim { background: color-mix(in oklab, var(--card-bg) 46%, transparent); }
+  .v2-card--raised { background: color-mix(in oklab, var(--card-bg) 92%, var(--cream) 4%); border-color: color-mix(in oklab, var(--cream) 16%, transparent); }
+  .v2-card--good, .v2-card--warn, .v2-card--bad { border-top: 2px solid; }
+  .v2-card--good { border-top-color: var(--green); background: linear-gradient(180deg, color-mix(in oklab, var(--green) 7%, var(--card-bg)) 0%, color-mix(in oklab, var(--card-bg) 72%, transparent) 46%); }
+  .v2-card--warn { border-top-color: var(--yellow); background: linear-gradient(180deg, color-mix(in oklab, var(--yellow) 7%, var(--card-bg)) 0%, color-mix(in oklab, var(--card-bg) 72%, transparent) 46%); }
+  .v2-card--bad { border-top-color: var(--red); background: linear-gradient(180deg, color-mix(in oklab, var(--red) 7%, var(--card-bg)) 0%, color-mix(in oklab, var(--card-bg) 72%, transparent) 46%); }
+  .v2-recs-panel {
+    grid-column: span 12; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    background: color-mix(in oklab, var(--gold) 10%, var(--card-bg));
+    border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+    border-radius: 10px; padding: 0.9rem 1.1rem;
+    box-shadow: 0 0 34px color-mix(in oklab, var(--gold) 18%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .v2-recs-panel__head { min-width: 12rem; }
+  .v2-recs-panel__kicker { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-soft); font-weight: 700; }
+  .v2-recs-panel__title { font-family: var(--serif); font-style: italic; font-size: 1.3rem; color: var(--cream); line-height: 1.15; }
+  .v2-recs--big { display: flex; gap: 0.55rem; flex-wrap: wrap; flex: 1; }
+  .v2-recs--big .v2-rec { font-size: 1.05rem; padding: 0.55rem 1.1rem; border-color: color-mix(in oklab, var(--gold) 40%, transparent); background: color-mix(in oklab, var(--card-bg) 55%, transparent); }
+  .v2-tip { position: relative; cursor: default; }
+  .v2-tip:hover .v2-tip__img, .v2-tip:focus-within .v2-tip__img, .v2-tip:focus .v2-tip__img { display: block; }
+  .v2-tip__img {
+    display: none; position: absolute; left: 0; bottom: calc(100% + 6px); z-index: 5;
+    width: 200px; height: auto; border-radius: 8px;
+    border: 1px solid color-mix(in oklab, var(--gold) 50%, transparent);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    pointer-events: none;
+  }
+  .v2-lb tbody tr:first-child .v2-tip__img { bottom: auto; top: calc(100% + 6px); }
+
   @media (max-width: 1100px) {
     .c3, .c4, .c5, .c6 { grid-column: span 6; }
   }
@@ -1791,8 +1830,24 @@
 
     <div class="v2-grid">
 
+      <!-- RECOMMENDED ACTIONS (featured) -->
+      <div class="v2-recs-panel">
+        <div class="v2-recs-panel__head">
+          <div class="v2-recs-panel__kicker">Recommended Actions</div>
+          <div class="v2-recs-panel__title">Where to act next fortnight</div>
+        </div>
+        <div class="v2-recs v2-recs--big">
+          <span class="v2-rec"><b>Hold</b> the mix</span>
+          <span class="v2-rec"><b>Scale</b> Brochure Download</span>
+          <span class="v2-rec"><b>Cut</b> zero-conv campaigns</span>
+          <span class="v2-rec"><b>Rebuild</b> top-funnel reach</span>
+          <span class="v2-rec"><b>Refresh</b> SEO content</span>
+          <span class="v2-rec"><b>Answer</b> every call</span>
+        </div>
+      </div>
+
       <!-- HERO + KPIs -->
-      <div class="v2-card c3">
+      <div class="v2-card c3 v2-card--good">
         <div class="v2-card__title">Blended cost per lead</div>
         <div class="v2-hero__value">$204</div>
         <div class="v2-hero__delta viz-up">▼ 25% <small>vs $273 · best of year</small></div>
@@ -1804,7 +1859,7 @@
       </div>
 
       <!-- FUNNEL -->
-      <div class="v2-card c5">
+      <div class="v2-card c5 v2-card--raised">
         <div class="v2-card__title">Paid media funnel <em>this fortnight</em></div>
         <div class="v2-funnel">
           <div class="v2-fstage" style="--w:100%; background: color-mix(in oklab, var(--gold) 30%, var(--card-bg));"><span class="v2-fstage__name">Impressions</span><span class="v2-fstage__num">261,493</span></div>
@@ -1854,7 +1909,7 @@
       </div>
 
       <!-- SPEND DONUT -->
-      <div class="v2-card c3">
+      <div class="v2-card c3 v2-card--good">
         <div class="v2-card__title">Spend by channel</div>
         <div class="v2-donutwrap">
           <div class="v2-donut" style="--d-bg: conic-gradient(color-mix(in oklab, var(--cream) 55%, transparent) 0 60%, var(--gold) 60% 100%);">
@@ -1870,7 +1925,7 @@
       </div>
 
       <!-- GAUGES -->
-      <div class="v2-card c3">
+      <div class="v2-card c3 v2-card--warn">
         <div class="v2-card__title">Against thresholds</div>
         <div class="v2-gauges">
           <div><div class="v2-gauge__ring" style="--g-pct:33; --g-color:var(--red);"><span class="v2-gauge__val">33%</span></div>
@@ -1883,7 +1938,7 @@
       </div>
 
       <!-- AUDIENCE TRIO -->
-      <div class="v2-card c3">
+      <div class="v2-card c3 v2-card--dim">
         <div class="v2-card__title">Who's clicking <em>Google Ads</em></div>
         <div class="v2-trio">
           <div><div class="v2-donut v2-donut--sm" style="--d-bg: conic-gradient(var(--gold) 0 67%, color-mix(in oklab, var(--cream) 55%, transparent) 67% 97%, color-mix(in oklab, var(--muted) 30%, transparent) 97% 100%); margin:0 auto;"><div class="v2-donut__center"><b>67%</b></div></div>
@@ -1897,7 +1952,7 @@
       </div>
 
       <!-- SESSIONS STACK -->
-      <div class="v2-card c3">
+      <div class="v2-card c3 v2-card--dim">
         <div class="v2-card__title">Site sessions by source <em>3,788</em></div>
         <div class="v2-stack">
           <span style="width:43.0%; background: var(--gold);"></span>
@@ -1916,7 +1971,7 @@
       </div>
 
       <!-- SEARCH -->
-      <div class="v2-card c4">
+      <div class="v2-card c4 v2-card--bad">
         <div class="v2-card__title">Organic search <em>211 queries · 4.8K impr</em></div>
         <div style="font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted);">Average position · lower is better</div>
         <div class="v2-dumbbell">
@@ -1935,23 +1990,23 @@
       </div>
 
       <!-- CREATIVE LEADERBOARD -->
-      <div class="v2-card c4">
-        <div class="v2-card__title">Meta creative leaderboard <em>top 5 of 19</em></div>
+      <div class="v2-card c4 v2-card--good">
+        <div class="v2-card__title">Meta creative leaderboard <em>top 5 of 19 · hover a name to see the ad</em></div>
         <table class="v2-lb">
           <thead><tr><th>Creative</th><th>Leads</th><th class="num">CPL</th><th class="num">Video views</th><th class="num">Engage</th></tr></thead>
           <tbody>
-            <tr><td style="color:var(--gold-soft); font-weight:600;">Image_Building · Brochure DL</td><td><span class="v2-lb__bar" style="width:60px;"></span> 10</td><td class="num">$70</td><td class="num">—</td><td class="num">384</td></tr>
-            <tr><td>Video_Sarasota Lifestyle · Feeder</td><td><span class="v2-lb__bar" style="width:54px; opacity:0.7;"></span> 9</td><td class="num">$132</td><td class="num">10,118</td><td class="num">4,778</td></tr>
-            <tr><td>Video_Sarasota Lifestyle · Rmkt</td><td><span class="v2-lb__bar" style="width:18px; opacity:0.7;"></span> 3</td><td class="num">$94</td><td class="num">3,112</td><td class="num">1,478</td></tr>
-            <tr><td>Video_Sarasota Lifestyle · Sarasota</td><td><span class="v2-lb__bar" style="width:12px; opacity:0.7;"></span> 2</td><td class="num">$342</td><td class="num">8,519</td><td class="num">3,971</td></tr>
-            <tr><td>Image_Where Legacy… v2 · Feeder</td><td><span class="v2-lb__bar" style="width:12px; opacity:0.7;"></span> 2</td><td class="num">$125</td><td class="num">—</td><td class="num">103</td></tr>
+            <tr><td style="color:var(--gold-soft); font-weight:600;"><span class="v2-tip" tabindex="0">Image_Building · Brochure DL<img class="v2-tip__img" src="/reports/2026-08-13/assets/creative-building.png" alt="Building render creative"></span></td><td><span class="v2-lb__bar" style="width:60px;"></span> 10</td><td class="num">$70</td><td class="num">—</td><td class="num">384</td></tr>
+            <tr><td><span class="v2-tip" tabindex="0">Video_Sarasota Lifestyle · Feeder<img class="v2-tip__img" src="/reports/2026-08-13/assets/creative-lifestyle.png" alt="Illustrated Sarasota map video creative"></span></td><td><span class="v2-lb__bar" style="width:54px; opacity:0.7;"></span> 9</td><td class="num">$132</td><td class="num">10,118</td><td class="num">4,778</td></tr>
+            <tr><td><span class="v2-tip" tabindex="0">Video_Sarasota Lifestyle · Rmkt<img class="v2-tip__img" src="/reports/2026-08-13/assets/creative-lifestyle.png" alt="Illustrated Sarasota map video creative"></span></td><td><span class="v2-lb__bar" style="width:18px; opacity:0.7;"></span> 3</td><td class="num">$94</td><td class="num">3,112</td><td class="num">1,478</td></tr>
+            <tr><td><span class="v2-tip" tabindex="0">Video_Sarasota Lifestyle · Sarasota<img class="v2-tip__img" src="/reports/2026-08-13/assets/creative-lifestyle.png" alt="Illustrated Sarasota map video creative"></span></td><td><span class="v2-lb__bar" style="width:12px; opacity:0.7;"></span> 2</td><td class="num">$342</td><td class="num">8,519</td><td class="num">3,971</td></tr>
+            <tr><td><span class="v2-tip" tabindex="0">Image_Where Legacy… v2 · Feeder<img class="v2-tip__img" src="/reports/2026-08-13/assets/creative-legacy.png" alt="Where Legacy Takes Residence toile creative"></span></td><td><span class="v2-lb__bar" style="width:12px; opacity:0.7;"></span> 2</td><td class="num">$125</td><td class="num">—</td><td class="num">103</td></tr>
           </tbody>
         </table>
         <div class="viz-note">A still image beats 22K video views on cost: the building itself is the ad. Same video converts at $94 in remarketing vs $342 cold — retarget, don't prospect, with it.</div>
       </div>
 
       <!-- WEBSITE HEALTH -->
-      <div class="v2-card c4">
+      <div class="v2-card c4 v2-card--bad">
         <div class="v2-card__title">Website health</div>
         <div class="v2-webtiles">
           <div class="v2-webtile"><div class="v2-kpi__label">Active users</div><div class="v2-kpi__value">3.7K</div><div class="v2-kpi__delta viz-down">▼ 36.1%</div></div>
@@ -1968,7 +2023,7 @@
       </div>
 
       <!-- PIPELINE FOOTER -->
-      <div class="v2-card c12">
+      <div class="v2-card c12 v2-card--raised">
         <div class="v2-pipe">
           <div class="v2-pipe__stat"><div class="v2-pipe__num">7</div><div class="v2-pipe__label">Warm</div></div>
           <div class="v2-pipe__stat"><div class="v2-pipe__num">4</div><div class="v2-pipe__label">Sales visits</div></div>
@@ -1979,14 +2034,6 @@
           <div class="v2-pipe__stat"><div class="v2-pipe__num v2-pipe__num--alert">4</div><div class="v2-pipe__label">Missed calls</div></div>
           <div class="v2-pipe__sep"></div>
           <div style="min-width:200px; flex:1;"><div class="v2-pipe__label" style="margin:0 0 0.3rem; text-align:left;">Call timeline · 15 days · <span style="color:var(--green)">answered</span> / <span style="color:var(--red)">missed</span> · 9 quiet days</div><div style="display:grid; grid-template-columns: repeat(15, 1fr); gap:3px;"><span title="Jul 30 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Jul 31 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 1 · 1 missed · 35s" style="display:block; height:14px; border-radius:3px; background: var(--red);"></span><span title="Aug 2 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 3 · 1 missed · 25s" style="display:block; height:14px; border-radius:3px; background: var(--red);"></span><span title="Aug 4 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 5 · 1 answered + 1 missed" style="display:block; height:14px; border-radius:3px; background: linear-gradient(90deg, var(--green) 50%, var(--red) 50%);"></span><span title="Aug 6 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 7 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 8 · 1 missed · 164s" style="display:block; height:14px; border-radius:3px; background: var(--red);"></span><span title="Aug 9 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 10 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 11 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span><span title="Aug 12 · 1 answered · 38s" style="display:block; height:14px; border-radius:3px; background: var(--green);"></span><span title="Aug 13 · no calls" style="display:block; height:14px; border-radius:3px; background: color-mix(in oklab, var(--muted) 14%, transparent);"></span></div><div style="display:flex; justify-content:space-between; font-size:0.52rem; color:var(--muted-soft); margin-top:0.2rem;"><span>Jul 30</span><span>Aug 6</span><span>Aug 13</span></div></div>
-          <div class="v2-recs">
-            <span class="v2-rec"><b>Hold</b> the mix</span>
-            <span class="v2-rec"><b>Scale</b> Brochure Download</span>
-            <span class="v2-rec"><b>Cut</b> zero-conv campaigns</span>
-            <span class="v2-rec"><b>Rebuild</b> top-funnel reach</span>
-            <span class="v2-rec"><b>Refresh</b> SEO content</span>
-            <span class="v2-rec"><b>Answer</b> every call</span>
-          </div>
         </div>
       </div>
 
