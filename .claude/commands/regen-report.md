@@ -32,6 +32,12 @@ For period ending date `END` (folder naming is always end-date based, matching t
 
 If `/reports/<END>/` already exists, **ask before overwriting**.
 
+## Data integrity — HARD RULES
+
+- **Never fabricate, estimate, or interpolate a number.** Every figure in the JSON, the report, and the visualization must trace to the Looker extraction or a prior period JSON.
+- **If a needed metric is not visible in Data Studio, STOP and ask the user for it.** This includes: table rows hidden by widget virtualization (only N of M rows render), chart values with no text labels (approximate bar reads don't count), and pages that fail to load. Do not ship a partial metric silently — either get the data or omit the panel and say so.
+- **Cross-check summary tiles against their own detail tables.** If a KPI tile contradicts the table it summarizes (e.g. answered + missed ≠ total), the self-consistent detail table wins — note the discrepancy in the JSON. CallRail's tiles have done this before (2026-08-13: tile said 3 answered, daily table proved 2).
+
 ## Pre-flight
 
 1. Confirm Chrome has the Looker Studio dashboard open and is signed in to a Google account with access:
@@ -90,7 +96,8 @@ Save extraction notes progressively to the scratchpad as you sweep pages (one se
    - `json-builder` — writes `/data/<END>.json` from the extraction notes, matching the most recent prior JSON's schema exactly, computing all deltas, assigning section statuses per the thresholds, and drafting the executive narrative. Must validate with `python3 json.load` before finishing. Never fabricate a number — null + note if missing.
    - `nav-updater` — adds the new entry (href `/reports/<END>/`, date label matching existing style) to the archive nav in every existing `/reports/*/index.html`, moves the `Latest` tag off the prior report. Does NOT touch root `/index.html` (it gets replaced) or create the new report folder.
 2. **After the JSON lands**: `html-builder` — builds `/reports/<END>/index.html` using the MOST RECENT prior report as the visual template (the design evolves; 2026-04-25 is stale), content from the JSON + extraction notes, replicates the nav with the new entry marked `is-current` + `Latest`, then copies to root `/index.html`.
-3. Verify yourself: JSON parses, exactly one `Latest` per nav, root mirror identical, numbers spot-check against extraction notes.
+3. **Visualization modal** — every report ships with the full-viewport "The Fortnight, Visualized" command view, opened by the `Visualization` pill next to Reports Archive. Use `/reports/2026-08-13/index.html` as the canonical implementation (viz-* / v2-* CSS + markup + JS): featured Recommended Actions strip, hero CPL + KPI tiles, paid-media funnel (real cross-stage rates; Spark pipeline shown as current stock, never as conversions), campaign-efficiency scatter (CPL × leads, bubble = spend, $150 Meta target line), threshold gauges wired to the §4 status framework, spend/audience donuts, sessions stack, GSC dumbbell + query bars, Meta creative leaderboard with hover tooltips (capture the period's actual ad thumbnails from the Looker Meta Ads Creative page into `/reports/<END>/assets/`), website-health tiles, daily call timeline, pipeline footer. All content comes from the period JSON + extraction notes — same no-fake-data rule; omit a panel rather than invent its data. Keep the established styling: black + dark-cream gradient backdrop, oxblood 80% panels with the gold hairline top border, Space Grotesk numerals.
+4. Verify yourself: JSON parses, exactly one `Latest` per nav, root mirror identical, numbers spot-check against extraction notes, Visualization opens with correct figures in dark AND light report themes.
 
 Extraction itself stays in the main session (the browser is stateful and single-tab).
 
@@ -153,7 +160,7 @@ Stop the local preview server.
 
 After the Vercel deploy is confirmed live, update the Mira Mar dashboard repo at `~/Applications/miramar-dashboard`:
 
-- `components/tabs/ReportsTab.tsx` → set `LATEST_REPORT_URL` to `https://mira-mar-report.vercel.app/reports/<END>/` and the card kicker to `Latest · <Mon D, YYYY>`.
+- `components/tabs/ReportsTab.tsx` → set `LATEST_REPORT_URL` to `https://mira-mar-report.vercel.app/reports/<END>/` and the card kicker to `Latest · <Mon D, YYYY>`. This powers the dashboard's **/reports page** (own sidebar item since 2026-08-13; the component is no longer a tab on `/`).
 - Commit just that file. **The snapshot cron commits to `origin/main` twice daily** — expect the push to be rejected; `git stash push <dirty files>`, `git pull --rebase`, `git push`, `git stash pop`.
 
 ## Final summary

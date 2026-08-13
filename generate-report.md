@@ -48,6 +48,8 @@ Read generate-report.md and follow it to produce this period's Mira Mar marketin
 
 ## 2. Per-Page Data Extraction
 
+**No fake data.** If a metric you need is not actually visible (virtualized table rows, unlabeled chart bars, broken widgets), stop and ask for it — never approximate or invent. Cross-check every summary tile against its detail table; the self-consistent source wins.
+
 For each page, capture both a screenshot (for visual context) and the page text/accessibility tree (for precise numbers). Use `mcp__claude-in-chrome__get_page_text` to dump the full page text in one call — much faster than scrolling and screenshotting.
 
 ### Spark Digital Ads Leads
@@ -240,4 +242,6 @@ The cadence is every 2 weeks. Set a reminder via the Claude Code `/schedule` ski
 - [ ] Copied to `/index.html`
 - [ ] Updated archive nav links in all reports (mark new as Latest, un-mark old)
 - [ ] Previewed locally with `python3 -m http.server 8765`
+- [ ] Built the Visualization modal from the period JSON (see regen-report.md § Build — includes creative thumbnails in /reports/<END>/assets/)
 - [ ] Committed + pushed to `main`
+- [ ] Updated miramar-dashboard /reports page pointer (LATEST_REPORT_URL + kicker in ReportsTab.tsx)
