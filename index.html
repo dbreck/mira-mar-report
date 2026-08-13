@@ -815,7 +815,7 @@
     border: 1px solid var(--card-edge); border-radius: 999px;
     padding: 0.55rem 1rem 0.55rem 0.85rem;
     color: var(--cream); font-family: var(--sans); font-size: 0.78rem;
-    font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; letter-spacing: 0.08em;
     cursor: pointer; transition: border-color 0.2s, color 0.2s;
   }
   .viz-trigger:hover { border-color: var(--gold); color: var(--gold-soft); }
@@ -942,12 +942,12 @@
   .viz-overlay { background: #05060a; }
   .viz-panel {
     /* modal-local dark blue-gray system (theme-independent) */
-    --card-bg: #131722;
-    --card-edge: rgba(150, 165, 190, 0.16);
-    --cream: #E7EAF2;
-    --white: #F6F8FC;
-    --muted: #98A2B6;
-    --muted-soft: #6C7488;
+    --card-bg: #241316;
+    --card-edge: rgba(164, 81, 94, 0.28);
+    --cream: #F3ECE7;
+    --white: #FFFDFB;
+    --muted: #B8AEA6;
+    --muted-soft: #8C8480;
     --num: 'Space Grotesk', 'Work Sans', -apple-system, sans-serif;
     background:
       radial-gradient(ellipse at 15% -10%, #1A2130, transparent 52%),
@@ -961,7 +961,7 @@
   .v2-hero__value, .v2-kpi__value, .v2-pipe__num, .v2-donut__center b, .v2-gauge__val { font-weight: 600; letter-spacing: -0.01em; }
   .v2-card, .v2-recs-panel {
     position: relative;
-    background: rgba(19, 23, 34, 0.8);
+    background: linear-gradient(180deg, rgba(42, 20, 22, 0.8) 0%, rgba(26, 14, 16, 0.8) 100%);
     border: 1px solid var(--card-edge);
   }
   .v2-card::before, .v2-recs-panel::before {
@@ -983,7 +983,7 @@
   .v2-recs--big { display: flex; gap: 0.55rem; flex-wrap: wrap; flex: 1; }
   .v2-recs--big { flex-wrap: nowrap; }
   @media (max-width: 1100px) { .v2-recs--big { flex-wrap: wrap; } }
-  .v2-recs--big .v2-rec { font-size: 0.78rem; white-space: nowrap; padding: 0.42rem 0.85rem; border-color: var(--card-edge); background: rgba(25, 30, 43, 0.8); }
+  .v2-recs--big .v2-rec { font-size: 0.78rem; white-space: nowrap; padding: 0.42rem 0.85rem; border-color: var(--card-edge); background: rgba(42, 20, 22, 0.8); }
   .v2-tip { position: relative; cursor: default; }
   .v2-tip:hover .v2-tip__img, .v2-tip:focus-within .v2-tip__img, .v2-tip:focus .v2-tip__img { display: block; }
   .v2-tip__img {
@@ -1111,8 +1111,7 @@
     <div class="hero__rule"></div>
     <h1 class="hero__title">Marketing<br>Performance <em>Report</em></h1>
     <div class="hero__period">July 30 — August 13, 2026</div>
-    <div class="hero__compare">▲ Comparing to July 16 – 30, 2026 · the prior fortnight</div>
-    <div class="hero__compare" style="border-color: color-mix(in oklab, var(--gold) 40%, transparent); color: var(--gold);">A like-for-like 15-day comparison — both windows are the same length, so every delta is a clean fortnight-over-fortnight figure. Worth carrying forward: the first half of July was exceptionally strong, so the baseline being measured against was already normalizing.</div>
+    <div class="hero__compare" style="border:none; color: var(--muted); font-size: 0.66rem;">Comparing to July 16 – 30, 2026 · the prior fortnight</div>
   </header>
 
   <!-- ───────── EXECUTIVE SUMMARY ───────── -->
