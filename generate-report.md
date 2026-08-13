@@ -95,6 +95,7 @@ For each page, capture both a screenshot (for visual context) and the page text/
 - Top landing pages
 
 ### CallRail
+> **Do not trust the summary KPI tiles on this page** — verified 2026-08-13: the "Answered Calls" tile showed 3 while the daily table summed to 2 answered + 4 missed = 6 total (the tile's own numbers didn't add up). Extract the **daily table** (all 15 rows) and sum it; the tiles are only a cross-check.
 - Total Calls, First Time Callers, Answered Calls, Missed Calls (with deltas)
 - Answer Rate, Avg Duration
 - Calls by Source (table: total/first time/leads per source)
